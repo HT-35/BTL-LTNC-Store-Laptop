@@ -14,12 +14,36 @@ const upload = multer({ storage: storage });
 
 const {
   createProductController,
-} = require("../controller/createProduct.controller");
+  getAllProductController,
+  getDetailBySlugController,
+  UpdateDetailBySlugController,
+  DeleteProductController,
+} = require("../controller/Product.controller");
 
-productRouter.get(
+//    [http://localhost:3000/product/create]
+productRouter.post(
   "/create",
   upload.array("photos", 12),
   createProductController
 );
+
+//    http://localhost:3000/product/update/:slug
+productRouter.put(
+  "/update/:slug",
+  upload.array("photos", 12),
+  UpdateDetailBySlugController
+);
+
+// http://localhost:3000/product/:id
+productRouter.get("/:slug", getDetailBySlugController);
+
+//   http://localhost:3000/product/
+productRouter.get("/", getAllProductController);
+
+//   http://localhost:3000/product/delete/:slug
+productRouter.delete("/delete/:slug", DeleteProductController);
+
+//   http://localhost:3000/product/delete/:slug
+productRouter.delete("/delete/", DeleteProductController);
 
 module.exports = { productRouter };

@@ -73,7 +73,8 @@ const product = new Schema({
   optionRamPrice: [optionRam],
   optionMemoryPrice: [optionMemory],
   price: String,
-  image: String,
+  image: [String],
+  slug: String,
   productInformation: String,
   Specifications: {
     processor,
