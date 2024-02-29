@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
-const { productModel } = require("../models/Product.model.mongodb");
+const {
+  productModel,
+} = require("../models/models Mongodb/Product.model.mongodb");
 
 const {
   createProductService,
@@ -47,7 +49,7 @@ const createProductController = async (req, res) => {
       });
     }
     const createProduct = await createProductService(data);
-    console.log(createProduct);
+    // console.log(createProduct);
     res.status(200).json({
       status: true,
       data: createProduct,

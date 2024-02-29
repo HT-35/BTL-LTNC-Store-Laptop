@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
-const { productModel } = require("../models/Product.model.mongodb");
+const {
+  productModel,
+} = require("../models/models Mongodb/Product.model.mongodb");
 
 const createProductService = async (data) => {
   try {

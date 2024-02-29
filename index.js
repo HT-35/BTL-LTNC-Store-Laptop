@@ -10,8 +10,8 @@ const port = process.env.PORT;
 sequelize;
 connectDBMongoDB();
 
-// app.use(express.static(path.join(__dirname, "./public")));
-app.use("/static", express.static(path.join(__dirname, "./public")));
+//localhost:3000/public/image/abc.jpg
+app.use("/public", express.static(path.join(__dirname, "public")));
 
 app.use(express.json()); // Middleware để xử lý JSON data
 app.use(express.urlencoded({ extended: true })); // Middleware để xử lý urlencoded data
