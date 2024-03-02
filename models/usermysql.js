@@ -43,8 +43,10 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: "UserMysql",
+      paranoid: true, // Chỉnh sửa thành true để kích hoạt soft delete
+
       timestamps: true,
+      modelName: "UserMysql",
     }
   );
   return UserMysql;

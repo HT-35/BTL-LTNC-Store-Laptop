@@ -1,10 +1,15 @@
 const {
   createUserController,
   findAllUserController,
-  findUserByEmail,
-  findUserByNumberPhone,
+  findUserByEmailorPhoneNumber,
+
   updateUserbyNumberPhoneOrEmail,
   deleteUserbyNumberPhoneOrEmail,
+  softDeleteUserbyNumberPhoneOrEmail,
+  findAllUserSoftDeletedController,
+  findDetailUserSoftDeletedController,
+  restoreAllUserSoftDeletedController,
+  restoreUserSoftDeletedController,
 } = require("../controller/user.controller");
 
 const userRouter = require("express").Router();
@@ -12,11 +17,23 @@ const userRouter = require("express").Router();
 //   localhost:3000/user/create
 userRouter.post("/create", createUserController);
 
-//   localhost:3000/user/:mail
-userRouter.get("/mail/:email", findUserByEmail);
+// localhost:3000/user/softdeleted
+userRouter.get("/soft-deleted", findAllUserSoftDeletedController);
 
-//   localhost:3000/user/:numberPhone
-userRouter.get("/numberPhone/:numberPhone", findUserByNumberPhone);
+//  localhost:3000/user/soft-deleted/restore/
+userRouter.post("/soft-deleted/restore/", restoreAllUserSoftDeletedController);
+
+//  localhost:3000/user/soft-deleted/restore/:slug
+userRouter.post(
+  "/soft-deleted/restore/:slug",
+  restoreUserSoftDeletedController
+);
+
+//   localhost:3000/user/soft-deleted/huyfa352002@gmail.com
+userRouter.get("/soft-deleted/:slug", findDetailUserSoftDeletedController);
+
+//   localhost:3000/user/:mail
+userRouter.get("/:slug", findUserByEmailorPhoneNumber);
 
 //   localhost:3000/user/:slug
 userRouter.patch("/:slug", updateUserbyNumberPhoneOrEmail);
@@ -24,11 +41,11 @@ userRouter.patch("/:slug", updateUserbyNumberPhoneOrEmail);
 //   localhost:3000/user/
 userRouter.get("/", findAllUserController);
 
-//   localhost:3000/user/
-userRouter.get("/", findAllUserController);
-
 //   localhost:3000/user/:slug
 userRouter.delete("/:slug", deleteUserbyNumberPhoneOrEmail);
+
+//   localhost:3000/user/softDelete/:slug
+userRouter.delete("/softDelete/:slug", softDeleteUserbyNumberPhoneOrEmail);
 
 module.exports = {
   userRouter,

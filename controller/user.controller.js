@@ -1,9 +1,13 @@
 const {
   createUserService,
   findUserAllUserService,
-  findUserByEmailService,
-  findUserByNumberPhoneService,
+  findUserByNumberPhoneOrEmailService,
   updateUserbyNumberPhoneOrEmailService,
+  deletedSoftbyNumberPhoneOrEmailService,
+  findUserAllUserSoftDeletedService,
+  findDetailUserSoftDeletedService,
+  restoreAllUserSoftDeletedService,
+  restoreUserSoftDeletedService,
 } = require("../services/mysql/user.services");
 
 const createUserController = async (req, res) => {
@@ -47,35 +51,9 @@ const findAllUserController = async (req, res) => {
       data: findUser,
     });
   } catch (error) {
-    res.status(200).json({
-      status: true,
-      data: error,
-    });
-  }
-};
-
-const findUserByEmail = async (req, res) => {
-  try {
-    const { email } = req.params;
-    if (!email) {
-      res.status(400).json({
-        status: false,
-        data: "Missing Email",
-      });
-    }
-
-    const findUserByEmail = await findUserByEmailService(email);
-    if (findUserByEmail == null) {
-      res.status(400).json({
-        status: false,
-        data: "Not Found User !!!",
-      });
-    }
-    res.status(200).json({
-      status: true,
-      data: findUserByEmail,
-    });
-  } catch (error) {
+    console.log("====================================");
+    console.log(error);
+    console.log("====================================");
     res.status(400).json({
       status: false,
       data: error,
@@ -83,28 +61,26 @@ const findUserByEmail = async (req, res) => {
   }
 };
 
-const findUserByNumberPhone = async (req, res) => {
+const findUserByEmailorPhoneNumber = async (req, res) => {
   try {
-    const { numberPhone } = req.params;
-    if (!numberPhone) {
-      return res.status(400).json({
+    const { slug } = req.params;
+    if (!slug) {
+      res.status(400).json({
         status: false,
         data: "Missing Email",
       });
     }
 
-    const findUserByNumberPhone = await findUserByNumberPhoneService(
-      numberPhone
-    );
-    if (findUserByNumberPhone == null) {
+    const findUserByEmail = await findUserByNumberPhoneOrEmailService(slug);
+    if (findUserByEmail == null) {
       return res.status(400).json({
         status: false,
-        data: "Not Found User !!!",
+        data: "Not Found User !!! cccc",
       });
     }
     res.status(200).json({
       status: true,
-      data: findUserByNumberPhone,
+      data: findUserByEmail,
     });
   } catch (error) {
     res.status(400).json({
@@ -148,6 +124,7 @@ const deleteUserbyNumberPhoneOrEmail = async (req, res) => {
       data: slug,
     });
   }
+  const findUser = findUserByEmailService(slug);
   res.status(200).json({
     status: true,
     delete: "delete",
@@ -155,11 +132,145 @@ const deleteUserbyNumberPhoneOrEmail = async (req, res) => {
   });
 };
 
+const softDeleteUserbyNumberPhoneOrEmail = async (req, res) => {
+  try {
+    const { slug } = req.params;
+
+    const findUser = await findUserByNumberPhoneOrEmailService(slug);
+
+    if (findUser === null) {
+      return res.status(200).json({
+        status: false,
+        delete: 0,
+        data: "Not Found User !!",
+      });
+    }
+    const deleteSoft = await deletedSoftbyNumberPhoneOrEmailService(slug);
+
+    res.status(200).json({
+      status: true,
+      delete: deleteSoft,
+      data: findUser,
+    });
+  } catch (error) {
+    console.log("====================================");
+    console.log(error);
+    console.log("====================================");
+    res.status(200).json({
+      status: true,
+      data: error.message,
+    });
+  }
+};
+
+const findAllUserSoftDeletedController = async (req, res) => {
+  try {
+    const findUser = await findUserAllUserSoftDeletedService();
+    if (findUser === null) {
+      return res.status(200).json({
+        status: true,
+        data: "There are no users !!!",
+      });
+    }
+    res.status(200).json({
+      status: true,
+      data: findUser,
+    });
+  } catch (error) {
+    console.log("====================================");
+    console.log(error);
+    console.log("====================================");
+    res.status(400).json({
+      status: false,
+      data: error.message,
+    });
+  }
+};
+
+const findDetailUserSoftDeletedController = async (req, res) => {
+  try {
+    const { slug } = req.params;
+
+    if (!slug) {
+      return res.status(404).json({
+        status: false,
+        data: "missing email or phone number",
+      });
+    }
+    const getDetailUserSoftDeleted = await findDetailUserSoftDeletedService(
+      slug
+    );
+    if (getDetailUserSoftDeleted == null) {
+      return res.status(200).json({
+        status: true,
+        data: "Not Found User !!",
+      });
+    }
+    res.status(200).json({
+      status: true,
+      data: getDetailUserSoftDeleted,
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: false,
+      data: error.message,
+    });
+  }
+};
+
+const restoreAllUserSoftDeletedController = async (req, res) => {
+  try {
+    const restoreAllUser = await restoreAllUserSoftDeletedService();
+    res.status(200).json({
+      status: true,
+      data: restoreAllUser,
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: false,
+      data: error.message,
+    });
+  }
+};
+
+const restoreUserSoftDeletedController = async (req, res) => {
+  try {
+    const { slug } = req.params;
+
+    const getDetailUserSoftDeleted = await findDetailUserSoftDeletedService(
+      slug
+    );
+    if (getDetailUserSoftDeleted == null) {
+      return res.status(200).json({
+        status: true,
+        data: "Not Found User !!",
+      });
+    }
+
+    const restoreUserSoftDeleted = await restoreUserSoftDeletedService(slug);
+
+    res.status(200).json({
+      status: true,
+      delete: restoreUserSoftDeleted,
+      user: getDetailUserSoftDeleted,
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: false,
+      data: error,
+    });
+  }
+};
+
 module.exports = {
   createUserController,
   findAllUserController,
-  findUserByEmail,
-  findUserByNumberPhone,
+  findUserByEmailorPhoneNumber,
   updateUserbyNumberPhoneOrEmail,
   deleteUserbyNumberPhoneOrEmail,
+  softDeleteUserbyNumberPhoneOrEmail,
+  findAllUserSoftDeletedController,
+  findDetailUserSoftDeletedController,
+  restoreAllUserSoftDeletedController,
+  restoreUserSoftDeletedController,
 };
