@@ -1,5 +1,8 @@
 const express = require("express");
 const app = express();
+const cors = require("cors");
+app.use(cors());
+
 const bodyParser = require("body-parser");
 const path = require("path");
 require("dotenv").config();
@@ -17,6 +20,13 @@ app.use(express.json()); // Middleware để xử lý JSON data
 app.use(express.urlencoded({ extended: true })); // Middleware để xử lý urlencoded data
 
 app.use("/", router);
+
+// xử lý CORS headers
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "http://127.0.0.1:5500");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  next();
+});
 
 app.listen(port, () => {
   console.log("run at http://localhost:3000");

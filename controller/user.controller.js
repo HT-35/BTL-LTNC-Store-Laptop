@@ -10,9 +10,15 @@ const {
   restoreUserSoftDeletedService,
 } = require("../services/mysql/user.services");
 
+const {
+  EncryptionUtils,
+  DecodeUtils,
+} = require("../utils/SignVerifyToken.utils");
+
 const createUserController = async (req, res) => {
   try {
     const data = req.body;
+    const { passWord } = data;
 
     if (!data) {
       res.status(200).json({
@@ -20,6 +26,13 @@ const createUserController = async (req, res) => {
         data: createUser,
       });
     }
+
+    const encryptionPassword = await EncryptionUtils(passWord);
+    req.body.passWord = encryptionPassword;
+
+    // verify token
+    // const passwordDecode = await passwordDecodeUtils(encryptionPassword);
+
     const createUser = await createUserService(data);
     console.log("====================================");
     console.log(createUser);
@@ -28,17 +41,18 @@ const createUserController = async (req, res) => {
     if (createUser.errors) {
       return res.status(404).json({
         status: false,
-        data: createUser.errors[0],
+        data: createUser,
       });
     }
     res.status(200).json({
       status: true,
-      data: createUser,
+      data1: createUser,
     });
   } catch (error) {
+    console.log(error);
     res.status(200).json({
       status: false,
-      data: error,
+      data: error.massages,
     });
   }
 };
@@ -75,7 +89,7 @@ const findUserByEmailorPhoneNumber = async (req, res) => {
     if (findUserByEmail == null) {
       return res.status(400).json({
         status: false,
-        data: "Not Found User !!! cccc",
+        data: "Not Found User !!!",
       });
     }
     res.status(200).json({

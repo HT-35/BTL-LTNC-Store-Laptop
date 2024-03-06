@@ -17,7 +17,6 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         defaultValue: false,
         allowNull: false,
-        unique: true,
       },
       passWord: {
         type: DataTypes.STRING,

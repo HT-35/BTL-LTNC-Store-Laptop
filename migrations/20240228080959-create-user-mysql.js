@@ -15,7 +15,7 @@ module.exports = {
       },
       fullName: {
         allowNull: false,
-        unique: true,
+
         type: Sequelize.STRING,
       },
       passWord: {

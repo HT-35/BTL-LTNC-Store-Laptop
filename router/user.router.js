@@ -12,13 +12,24 @@ const {
   restoreUserSoftDeletedController,
 } = require("../controller/user.controller");
 
+const {
+  authenticationLogin,
+} = require("../middlewares/authentication.middlewates");
+const {
+  authorizationAdmin,
+} = require("../middlewares/authorization.middleware");
+
 const userRouter = require("express").Router();
 
 //   localhost:3000/user/create
 userRouter.post("/create", createUserController);
 
 // localhost:3000/user/softdeleted
-userRouter.get("/soft-deleted", findAllUserSoftDeletedController);
+userRouter.get(
+  "/soft-deleted",
+  authenticationLogin,
+  findAllUserSoftDeletedController
+);
 
 //  localhost:3000/user/soft-deleted/restore/
 userRouter.post("/soft-deleted/restore/", restoreAllUserSoftDeletedController);
@@ -30,16 +41,30 @@ userRouter.post(
 );
 
 //   localhost:3000/user/soft-deleted/huyfa352002@gmail.com
-userRouter.get("/soft-deleted/:slug", findDetailUserSoftDeletedController);
+userRouter.get(
+  "/soft-deleted/:slug",
+
+  findDetailUserSoftDeletedController
+);
 
 //   localhost:3000/user/:mail
-userRouter.get("/:slug", findUserByEmailorPhoneNumber);
+userRouter.get(
+  "/:slug",
+  authenticationLogin,
+  // authorizationAdmin,
+  findUserByEmailorPhoneNumber
+);
 
 //   localhost:3000/user/:slug
 userRouter.patch("/:slug", updateUserbyNumberPhoneOrEmail);
 
 //   localhost:3000/user/
-userRouter.get("/", findAllUserController);
+userRouter.get(
+  "/",
+  authenticationLogin,
+  authorizationAdmin,
+  findAllUserController
+);
 
 //   localhost:3000/user/:slug
 userRouter.delete("/:slug", deleteUserbyNumberPhoneOrEmail);
