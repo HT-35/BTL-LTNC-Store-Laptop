@@ -8,6 +8,8 @@ const {
 
 require("dotenv").config();
 
+const data = "hello";
+
 const loginUserCotroller = async (req, res) => {
   try {
     const { username, password } = req.body;
