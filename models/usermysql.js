@@ -13,6 +13,12 @@ module.exports = (sequelize, DataTypes) => {
   }
   UserMysql.init(
     {
+      id: {
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: DataTypes.INTEGER,
+      },
       fullName: {
         type: DataTypes.STRING,
         defaultValue: false,

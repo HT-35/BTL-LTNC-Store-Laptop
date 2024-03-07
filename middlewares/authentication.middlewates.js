@@ -29,6 +29,8 @@ const authenticationLogin = async (req, res, next) => {
       });
     }
 
+    req.data = findUser;
+
     next();
 
     //   console.log(token);
