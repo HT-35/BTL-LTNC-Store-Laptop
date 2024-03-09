@@ -1,10 +1,8 @@
 "use strict";
 
-const { sequelize } = require("../models");
-
-/** @type {import('sequelize-cli').Migration} */
+/** @type {import('sequelize').QueryInterface} */
 module.exports = {
-  async up(queryInterface, Sequelize) {
+  up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable("UserMysqls", {
       id: {
         allowNull: false,
@@ -15,7 +13,6 @@ module.exports = {
       },
       fullName: {
         allowNull: false,
-
         type: Sequelize.STRING,
       },
       passWord: {
@@ -33,9 +30,8 @@ module.exports = {
         type: Sequelize.STRING,
       },
       role: {
-        type: Sequelize.ENUM, // Sử dụng ENUM để chỉ cho phép giá trị là 'admin' hoặc 'customer'
-        values: ["admin", "customer"],
-        allowNull: false, // Không cho phép giá trị null
+        type: Sequelize.ENUM("admin", "customer"),
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,
@@ -47,12 +43,14 @@ module.exports = {
       },
       deletedAt: {
         allowNull: true,
-        defaultValue: null, // Hoặc một giá trị mặc định khác phù hợp với yêu cầu của bạn
+        defaultValue: null,
         type: Sequelize.DATE,
       },
     });
   },
-  async down(queryInterface, Sequelize) {
+
+  down: async (queryInterface, Sequelize) => {
+    // Xóa bảng UserMysqls
     await queryInterface.dropTable("UserMysqls");
   },
 };
