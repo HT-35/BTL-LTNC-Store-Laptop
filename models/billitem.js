@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate({ Bill }) {
       // define association here
       BillItem.belongsTo(Bill, {
-        foreignKey: id_Bill,
+        foreignKey: "yy",
         as: "id_BillOfBillItem",
       });
     }

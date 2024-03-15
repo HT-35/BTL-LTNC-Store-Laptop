@@ -1,16 +1,16 @@
+const { findCartbyIdUser } = require("../services/mysql/cart.servers");
+
 const cartUser = async (req, res) => {
   try {
-      const { email, numberPhone } = req.data;
-      
+    const { id } = req.data;
+
     //   cart : id , id_user ,id_product,
 
-    const findCartbyEmailOrNumberPhone = findCartbyEmailOrNumberPhone(
-      email,
-      numberPhone
-    );
+    const findCartbyEmailOrNumberPhone = await findCartbyIdUser(id);
+    console.log(findCartbyEmailOrNumberPhone);
     res.status(200).json({
       status: true,
-      data: email,
+      data: findCartbyEmailOrNumberPhone,
     });
   } catch (error) {
     res.status(400).json({

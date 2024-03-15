@@ -11,12 +11,12 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
 
       UserMysql.hasOne(CartUser, {
-        foreignKey: id,
-        as: "idOfUserModel",
+        foreignKey: "id",
+        as: "idOfUserModelinCartModel",
       });
       UserMysql.hasMany(Bill, {
-        foreignKey: id,
-        as: "idOfUserModel",
+        foreignKey: "id",
+        as: "idOfUserModelinBillModel",
       });
     }
   }

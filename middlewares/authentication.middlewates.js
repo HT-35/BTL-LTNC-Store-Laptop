@@ -29,6 +29,8 @@ const authenticationLogin = async (req, res, next) => {
       });
     }
 
+    // console.log(findUser);
+
     req.data = findUser;
 
     next();

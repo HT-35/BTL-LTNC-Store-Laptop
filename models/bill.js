@@ -10,17 +10,17 @@ module.exports = (sequelize, DataTypes) => {
     static associate({ UserMysql, BillItem, BillAddress }) {
       // define association here
       Bill.belongsTo(UserMysql, {
-        foreignKey: id_user,
+        foreignKey: "id_user",
         as: "id_userOfBillModel",
       });
 
       Bill.belongsTo(BillAddress, {
-        foreignKey: billing_info_id,
+        foreignKey: "billing_info_id",
         as: "billing_info_idOfBillModel",
       });
 
       Bill.hasMany(BillItem, {
-        foreignKey: id,
+        foreignKey: "id",
         as: "IdOfBillModel",
       });
     }
