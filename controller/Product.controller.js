@@ -6,7 +6,7 @@ const {
 const {
   createProductService,
   getAllService,
-  getDetailProductById,
+  getDetailProductBySlug,
   updateDataProductbySlug,
   deleteProductBySlug,
 } = require("../services/product.service");
@@ -80,7 +80,7 @@ const getAllProductController = async (req, res) => {
 const getDetailBySlugController = async (req, res) => {
   try {
     const { slug } = req.params;
-    const findDetailBySlug = await getDetailProductById(slug);
+    const findDetailBySlug = await getDetailProductBySlug(slug);
     if (findDetailBySlug == null) {
       return res.status(400).json({
         status: false,
@@ -123,7 +123,7 @@ const UpdateDetailBySlugController = async (req, res) => {
     if (!slug) {
       return res.status(400).json({ status: false, data: "missing slug" });
     }
-    const findProduct = await getDetailProductById(slug);
+    const findProduct = await getDetailProductBySlug(slug);
 
     const data = req.body;
     console.log("====================================");
@@ -177,7 +177,7 @@ const DeleteProductController = async (req, res) => {
         data: "Missing Slug",
       });
     }
-    const findProduct = await getDetailProductById(slug);
+    const findProduct = await getDetailProductBySlug(slug);
     if (findProduct == null) {
       return res.status(400).json({
         status: false,

@@ -17,10 +17,10 @@ module.exports = {
         },
       },
       id_product: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
         allowNull: false,
       },
-      quanlity: {
+      quantity: {
         type: Sequelize.INTEGER,
         allowNull: false,
       },

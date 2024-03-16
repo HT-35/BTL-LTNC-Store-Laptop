@@ -24,9 +24,22 @@ const getAllService = async () => {
   }
 };
 
-const getDetailProductById = async (slug) => {
+const getDetailProductBySlug = async (slug) => {
   try {
     const findDetailProduct = await productModel.findOne({ slug }).exec();
+    if (!findDetailProduct) {
+      return null;
+    } else {
+      return findDetailProduct;
+    }
+  } catch (error) {
+    return error.message;
+  }
+};
+
+const getDetailProductByID = async (_id) => {
+  try {
+    const findDetailProduct = await productModel.findOne({ _id }).exec();
     if (!findDetailProduct) {
       return null;
     } else {
@@ -59,7 +72,8 @@ const deleteProductBySlug = async (slug) => {
 module.exports = {
   createProductService,
   getAllService,
-  getDetailProductById,
+  getDetailProductBySlug,
+  getDetailProductByID,
   updateDataProductbySlug,
   deleteProductBySlug,
 };

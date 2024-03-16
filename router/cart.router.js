@@ -1,4 +1,4 @@
-const { cartUser } = require("../controller/cart.contoller");
+const { findCartUserController } = require("../controller/cart.contoller");
 
 const {
   authenticationLogin,
@@ -9,8 +9,9 @@ const {
 
 const cartRouter = require("express").Router();
 
-cartRouter.get("/", authenticationLogin, cartUser);
+cartRouter.get("/", authenticationLogin, findCartUserController);
 
-module.exports = {
-  cartRouter,
-};
+cartRouter.post("/"),
+  (module.exports = {
+    cartRouter,
+  });
