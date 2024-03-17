@@ -1,4 +1,8 @@
-const { findCartUserController } = require("../controller/cart.contoller");
+const {
+  findCartUserController,
+  addProductToCartController,
+  reduceQuantityProductInCartController,
+} = require("../controller/cart.contoller");
 
 const {
   authenticationLogin,
@@ -11,7 +15,13 @@ const cartRouter = require("express").Router();
 
 cartRouter.get("/", authenticationLogin, findCartUserController);
 
-cartRouter.post("/"),
-  (module.exports = {
-    cartRouter,
-  });
+cartRouter.post("/", authenticationLogin, addProductToCartController);
+
+cartRouter.patch(
+  "/reduce-quantity",
+  authenticationLogin,
+  reduceQuantityProductInCartController
+);
+module.exports = {
+  cartRouter,
+};

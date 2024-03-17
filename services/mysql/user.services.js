@@ -14,21 +14,29 @@ const createUserService = async (data) => {
 };
 
 const findUserAllUserService = async () => {
-  const findAllUser = await UserMysql.findAll({
-    attributes: { exclude: ["createdAt", "updatedAt", "deletedAt"] },
-  });
-  return findAllUser;
+  try {
+    const findAllUser = await UserMysql.findAll({
+      attributes: { exclude: ["createdAt", "updatedAt", "deletedAt"] },
+    });
+    return findAllUser;
+  } catch (error) {
+    return error;
+  }
 };
 
 const findUserByNumberPhoneOrEmailService = async (slug) => {
-  const findUserByEmail = await UserMysql.findOne({
-    where: {
-      [Op.or]: [{ email: slug }, { numberPhone: slug }],
-    },
-    attributes: { exclude: ["createdAt", "updatedAt", "deletedAt"] },
-  });
+  try {
+    const findUserByEmail = await UserMysql.findOne({
+      where: {
+        [Op.or]: [{ email: slug }, { numberPhone: slug }],
+      },
+      attributes: { exclude: ["createdAt", "updatedAt", "deletedAt"] },
+    });
 
-  return findUserByEmail;
+    return findUserByEmail;
+  } catch (error) {
+    return error;
+  }
 };
 
 const updateUserbyNumberPhoneOrEmailService = async (
@@ -38,83 +46,104 @@ const updateUserbyNumberPhoneOrEmailService = async (
   fullName,
   role
 ) => {
-  const updateUser = await UserMysql.update(
-    { email, numberPhone, fullName, role },
-    {
-      where: {
-        email: slug,
-      },
-    }
-  );
-  console.log(updateUser);
-  return updateUser;
+  try {
+    const updateUser = await UserMysql.update(
+      { email, numberPhone, fullName, role },
+      {
+        where: {
+          email: slug,
+        },
+      }
+    );
+    console.log(updateUser);
+    return updateUser;
+  } catch (error) {
+    return error;
+  }
 };
 
 const deletedSoftbyNumberPhoneOrEmailService = async (slug) => {
-  if (!slug) {
-    return null;
-  }
-  const deleteSoft = await UserMysql.destroy({
-    where: {
-      [Op.or]: [{ email: slug }, { numberPhone: slug }],
-    },
-  });
+  try {
+    if (!slug) {
+      return null;
+    }
+    const deleteSoft = await UserMysql.destroy({
+      where: {
+        [Op.or]: [{ email: slug }, { numberPhone: slug }],
+      },
+    });
 
-  return deleteSoft;
+    return deleteSoft;
+  } catch (error) {
+    return error;
+  }
 };
 
 const findUserAllUserSoftDeletedService = async () => {
-  const findAllUserSoftDeleted = await UserMysql.findAll({
-    paranoid: false,
-    where: {
-      deletedAt: {
-        [Op.ne]: null,
+  try {
+    const findAllUserSoftDeleted = await UserMysql.findAll({
+      paranoid: false,
+      where: {
+        deletedAt: {
+          [Op.ne]: null,
+        },
       },
-    },
-    attributes: { exclude: ["createdAt", "updatedAt", "deletedAt"] },
-  });
-  if (findAllUserSoftDeleted.length === 0) {
-    return null;
+      attributes: { exclude: ["createdAt", "updatedAt", "deletedAt"] },
+    });
+    if (findAllUserSoftDeleted.length === 0) {
+      return null;
+    }
+    return findAllUserSoftDeleted;
+  } catch (error) {
+    return error;
   }
-  return findAllUserSoftDeleted;
 };
 
 const findDetailUserSoftDeletedService = async (slug) => {
-  const findDetailUserSoftDeleted = await UserMysql.findAll({
-    paranoid: false,
-    where: {
-      [Op.or]: [{ email: slug }, { numberPhone: slug }],
-      deletedAt: {
-        [Op.ne]: null,
+  try {
+    const findDetailUserSoftDeleted = await UserMysql.findAll({
+      paranoid: false,
+      where: {
+        [Op.or]: [{ email: slug }, { numberPhone: slug }],
+        deletedAt: {
+          [Op.ne]: null,
+        },
       },
-    },
-    attributes: { exclude: ["createdAt", "updatedAt", "deletedAt"] },
-  });
-  if (findDetailUserSoftDeleted.length == 0) {
-    return null;
+      attributes: { exclude: ["createdAt", "updatedAt", "deletedAt"] },
+    });
+    if (findDetailUserSoftDeleted.length == 0) {
+      return null;
+    }
+    return findDetailUserSoftDeleted;
+  } catch (error) {
+    return error;
   }
-  return findDetailUserSoftDeleted;
 };
 
 const restoreAllUserSoftDeletedService = async () => {
-  const restoreAllUser = UserMysql.restore();
-  return restoreAllUser;
+  try {
+    const restoreAllUser = UserMysql.restore();
+    return restoreAllUser;
+  } catch (error) {
+    return error;
+  }
 };
 
 const restoreUserSoftDeletedService = async (slug) => {
-  // console.log("====================================");
-  // console.log("service:  ", slug);
-  // console.log("====================================");
-  const restoreAllUser = await UserMysql.restore({
-    where: {
-      [Op.or]: [{ email: slug }, { numberPhone: slug }],
-      deletedAt: {
-        [Op.ne]: null,
+  try {
+    const restoreAllUser = await UserMysql.restore({
+      where: {
+        [Op.or]: [{ email: slug }, { numberPhone: slug }],
+        deletedAt: {
+          [Op.ne]: null,
+        },
       },
-    },
-  });
+    });
 
-  return restoreAllUser;
+    return restoreAllUser;
+  } catch (error) {
+    return error;
+  }
 };
 
 module.exports = {

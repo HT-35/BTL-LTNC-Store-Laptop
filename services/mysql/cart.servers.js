@@ -1,6 +1,7 @@
+const { Op } = require("sequelize");
 const { CartUser } = require("../../models/index");
 
-const findCartbyIdUser = async (id) => {
+const findCartbyIdUserService = async (id) => {
   try {
     // console.log("service : id =    ", id);
     const findCart = await CartUser.findAll({
@@ -11,7 +12,7 @@ const findCartbyIdUser = async (id) => {
         exclude: ["id", "id_user", "updatedAt"],
       },
       order: [
-        ["createdAt", "ASC"], // Sắp xếp theo thời gian khởi tạo tăng dần
+        ["createdAt", "DESC"], // Sắp xếp theo thời gian khởi tạo tăng dần
         // Hoặc ['createdAt', 'DESC'] nếu bạn muốn sắp xếp giảm dần
         //["createdAt", "ASC"], // Sắp xếp theo thời gian khởi tạo tăng dần
       ],
@@ -20,11 +21,70 @@ const findCartbyIdUser = async (id) => {
     return findCart;
   } catch (error) {
     throw new Error(
-      "Lỗi khi tìm kiếm giỏ hàng theo id người dùng: " + error.message
+      "Đã xảy ra lỗi khi tìm kiếm giỏ hàng của người dùng theo ID: " +
+        error.message
     );
   }
 };
 
+const addProductToCartService = async (newProduct) => {
+  try {
+    const addProduct = await CartUser.create(newProduct);
+    return addProduct;
+  } catch (error) {
+    throw new Error("lỗi rồi" + error.message);
+  }
+};
+
+const findProductDetailCardService = async (id_user, id_product) => {
+  try {
+    if (!id_user) return "Service Missing id";
+    const findProductDetailCard = await CartUser.findAll({
+      where: {
+        [Op.and]: [{ id_user: id_user }, { id_product: id_product }],
+      },
+    });
+
+    if (!findProductDetailCard.length) {
+      return null;
+    }
+    return findProductDetailCard;
+  } catch (error) {
+    return error;
+  }
+};
+
+const increaseQuantityCartServer = async ({
+  id_user,
+  id_product,
+  newQuantity,
+  defaultQuantity,
+}) => {
+  try {
+    if (!id_product) return "Service Missing id_product";
+
+    const increaseProduct = await CartUser.update(
+      { quantity: newQuantity || defaultQuantity },
+      {
+        where: {
+          [Op.and]: [{ id_user: id_user }, { id_product: id_product }],
+        },
+      }
+    );
+
+    // console.log("====================================");
+    // console.log(increaseProduct);
+    // console.log("====================================");
+
+    return increaseProduct;
+  } catch (error) {
+    return error;
+  }
+};
+
 module.exports = {
-  findCartbyIdUser,
+  findCartbyIdUserService,
+  addProductToCartService,
+  findProductDetailCardService,
+  increaseQuantityCartServer,
 };
