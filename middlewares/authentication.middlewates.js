@@ -25,7 +25,7 @@ const authenticationLogin = async (req, res, next) => {
     if (findUser === null) {
       return res.status(404).json({
         status: false,
-        data: "username or password wrong !!!",
+        data: "Login again !!!",
       });
     }
 

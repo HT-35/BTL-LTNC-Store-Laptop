@@ -1,7 +1,8 @@
 "use strict";
-/** @type {import('sequelize-cli').Migration} */
+
 module.exports = {
   async up(queryInterface, Sequelize) {
+    // Create the 'BillItems' table
     await queryInterface.createTable("BillItems", {
       id: {
         allowNull: false,
@@ -12,10 +13,10 @@ module.exports = {
       id_Bill: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        references: {
-          model: "Bills",
-          key: "id",
-        },
+      },
+      id_Product: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
       },
       quanlity: {
         type: Sequelize.INTEGER,
@@ -34,8 +35,24 @@ module.exports = {
         type: Sequelize.DATE,
       },
     });
+
+    // Add foreign key constraint
+    await queryInterface.addConstraint("BillItems", {
+      fields: ["id_Bill"],
+      type: "foreign key",
+      name: "BillItems_id_Bill_fk",
+      references: {
+        table: "Bills",
+        field: "id",
+      },
+      onDelete: "CASCADE",
+    });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable("UserMysqls");
+    // Remove foreign key constraint
+    await queryInterface.removeConstraint("BillItems", "BillItems_id_Bill_fk");
+
+    // Drop the 'BillItems' table
+    await queryInterface.dropTable("BillItems");
   },
 };

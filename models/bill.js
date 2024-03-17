@@ -7,16 +7,11 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate({ UserMysql, BillItem, BillAddress }) {
+    static associate({ UserMysql, BillItem }) {
       // define association here
       Bill.belongsTo(UserMysql, {
         foreignKey: "id_user",
         as: "id_userOfBillModel",
-      });
-
-      Bill.belongsTo(BillAddress, {
-        foreignKey: "billing_info_id",
-        as: "billing_info_idOfBillModel",
       });
 
       Bill.hasMany(BillItem, {
@@ -29,7 +24,6 @@ module.exports = (sequelize, DataTypes) => {
     {
       id_user: DataTypes.NUMBER,
       total: DataTypes.NUMBER,
-      billing_info_id: DataTypes.NUMBER,
     },
     {
       sequelize,

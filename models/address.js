@@ -1,22 +1,26 @@
 "use strict";
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
-  class BillAddress extends Model {
+  class Address extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate({ Bill }) {
+    static associate({ UserMysql }) {
       // define association here
-      BillAddress.hasMany(Bill, {
-        foreignKey: "yyy",
-        as: "idOfBillModel",
+      Address.belongsTo(UserMysql, {
+        foreignKey: "id_User",
+        as: "idOfUserMysqlModel",
       });
     }
   }
-  BillAddress.init(
+  Address.init(
     {
+      id_User: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
       email_address: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -32,8 +36,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: "BillAddress",
+      modelName: "Address",
     }
   );
-  return BillAddress;
+  return Address;
 };

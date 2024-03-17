@@ -4,7 +4,7 @@ const {
   findProductDetailCardService,
   increaseQuantityCartServer,
   removeProductInCartService,
-} = require("../services/mysql/cart.servers");
+} = require("../services/mysql/cart.services");
 
 const { getDetailProductByID } = require("../services/product.service");
 

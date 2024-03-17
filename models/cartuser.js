@@ -5,6 +5,11 @@ module.exports = (sequelize, DataTypes) => {
   class CartUser extends Model {
     static associate({ UserMysql }) {
       // define association here
+
+      CartUser.belongsTo(UserMysql, {
+        foreignKey: "id_user",
+        as: "id_userOfCartModel",
+      });
     }
   }
   CartUser.init(

@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate({ CartUser, Bill }) {
+    static associate({ CartUser, Bill, Address }) {
       // define association here
 
       UserMysql.hasOne(CartUser, {
@@ -17,6 +17,11 @@ module.exports = (sequelize, DataTypes) => {
       UserMysql.hasMany(Bill, {
         foreignKey: "id",
         as: "idOfUserModelinBillModel",
+      });
+
+      UserMysql.hasMany(Address, {
+        foreignKey: "id",
+        as: "idOfUserModelinAddressModel",
       });
     }
   }

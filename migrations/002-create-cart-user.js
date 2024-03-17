@@ -1,6 +1,8 @@
 "use strict";
+
 module.exports = {
   up: async (queryInterface, Sequelize) => {
+    // Create the 'CartUsers' table
     await queryInterface.createTable("CartUsers", {
       id: {
         allowNull: false,
@@ -11,10 +13,6 @@ module.exports = {
       id_user: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        references: {
-          model: "UserMysqls",
-          key: "id",
-        },
       },
       id_product: {
         type: Sequelize.STRING,
@@ -33,8 +31,24 @@ module.exports = {
         type: Sequelize.DATE,
       },
     });
+
+    // Add foreign key constraint
+    await queryInterface.addConstraint("CartUsers", {
+      fields: ["id_user"],
+      type: "foreign key",
+      name: "CartUsers_id_user_fk",
+      references: {
+        table: "UserMysqls",
+        field: "id",
+      },
+      onDelete: "CASCADE",
+    });
   },
   down: async (queryInterface, Sequelize) => {
+    // Remove foreign key constraint
+    await queryInterface.removeConstraint("CartUsers", "CartUsers_id_user_fk");
+
+    // Drop the 'CartUsers' table
     await queryInterface.dropTable("CartUsers");
   },
 };
