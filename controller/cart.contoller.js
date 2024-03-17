@@ -3,12 +3,16 @@ const {
   addProductToCartService,
   findProductDetailCardService,
   increaseQuantityCartServer,
+  removeProductInCartService,
 } = require("../services/mysql/cart.servers");
 
 const { getDetailProductByID } = require("../services/product.service");
 
 const productModel = require("../models/models Mongodb/Product.model.mongodb");
 const { default: mongoose } = require("mongoose");
+const {
+  findDetailUserSoftDeletedService,
+} = require("../services/mysql/user.services");
 
 const findCartUserController = async (req, res) => {
   try {
@@ -43,6 +47,13 @@ const addProductToCartController = async (req, res) => {
   try {
     const { id_product, quantity } = req.body;
     const id_user = req.infoUser.id;
+
+    if (!id_product || !quantity) {
+      return res.status(200).json({
+        status: true,
+        data: "missing id_product or quantity",
+      });
+    }
 
     const newProduct = { id_user, id_product, quantity };
 
@@ -91,6 +102,14 @@ const addProductToCartController = async (req, res) => {
 
 const reduceQuantityProductInCartController = async (req, res) => {
   const { id_product, quantity } = req.body;
+
+  if (!id_product || !quantity) {
+    return res.status(200).json({
+      status: true,
+      data: "missing id_product or quantity",
+    });
+  }
+
   const id_user = req.infoUser.id;
   const findProduct = await findProductDetailCardService(id_user, id_product);
 
@@ -147,8 +166,52 @@ const reduceQuantityProductInCartController = async (req, res) => {
   // console.log(findProduct);
 };
 
+const removeProductInCartController = async (req, res) => {
+  try {
+    const id_user = req.infoUser.id;
+
+    const { id_product } = req.body;
+    if (!id_product) {
+      return res.status(200).json({
+        status: true,
+        data: "missing id_product",
+      });
+    }
+
+    const findProduct = await findProductDetailCardService(id_user, id_product);
+    if (!findProduct) {
+      return res.status(200).json({
+        status: true,
+        data: "Not Found Product",
+      });
+    }
+
+    const removeProductInCart = await removeProductInCartService({
+      id_user,
+      id_product,
+    });
+
+    console.log("====================================");
+    console.log(removeProductInCart);
+    console.log("====================================");
+
+    return res.status(200).json({
+      status: true,
+      removed: removeProductInCart,
+      data: findProduct,
+    });
+  } catch (error) {
+    return res.status(400).json({
+      status: true,
+
+      data: error.message,
+    });
+  }
+};
+
 module.exports = {
   findCartUserController,
   addProductToCartController,
   reduceQuantityProductInCartController,
+  removeProductInCartController,
 };

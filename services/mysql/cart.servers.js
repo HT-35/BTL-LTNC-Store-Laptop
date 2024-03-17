@@ -45,6 +45,10 @@ const findProductDetailCardService = async (id_user, id_product) => {
       },
     });
 
+    // console.log("====================================");
+    // console.log("service:  ", findProductDetailCard.length);
+    // console.log("====================================");
+
     if (!findProductDetailCard.length) {
       return null;
     }
@@ -82,9 +86,25 @@ const increaseQuantityCartServer = async ({
   }
 };
 
+const removeProductInCartService = async ({ id_user, id_product }) => {
+  try {
+    if (!id_user && !id_product) return "missing id_user, id_product";
+
+    const removeProductInCart = await CartUser.destroy({
+      where: {
+        [Op.and]: [{ id_user }, { id_product }],
+      },
+    });
+    return removeProductInCart;
+  } catch (error) {
+    throw new Error("Lôi tại service Remove Product In Cart : " + error);
+  }
+};
+
 module.exports = {
   findCartbyIdUserService,
   addProductToCartService,
   findProductDetailCardService,
   increaseQuantityCartServer,
+  removeProductInCartService,
 };

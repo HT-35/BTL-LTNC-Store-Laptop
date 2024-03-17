@@ -2,6 +2,7 @@ const {
   findCartUserController,
   addProductToCartController,
   reduceQuantityProductInCartController,
+  removeProductInCartController,
 } = require("../controller/cart.contoller");
 
 const {
@@ -21,6 +22,12 @@ cartRouter.patch(
   "/reduce-quantity",
   authenticationLogin,
   reduceQuantityProductInCartController
+);
+
+cartRouter.delete(
+  "/remove-product",
+  authenticationLogin,
+  removeProductInCartController
 );
 module.exports = {
   cartRouter,
