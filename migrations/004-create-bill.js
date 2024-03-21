@@ -23,10 +23,6 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
-      id_Delevery_Address: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

@@ -14,8 +14,8 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
-      id_Product: {
-        type: Sequelize.INTEGER,
+      slug_Product: {
+        type: Sequelize.STRING,
         allowNull: false,
       },
       quanlity: {

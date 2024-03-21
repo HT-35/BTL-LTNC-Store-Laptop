@@ -21,8 +21,8 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
-      id_Product: {
-        type: DataTypes.INTEGER,
+      slug_Product: {
+        type: DataTypes.STRING,
         allowNull: false,
       },
       quanlity: {
