@@ -12,6 +12,9 @@ const loginUserCotroller = async (req, res) => {
   try {
     const { username, password } = req.body;
 
+    console.log({ username, password } );
+
+
     if (!username || !password) {
       return res.status(404).json({
         status: false,

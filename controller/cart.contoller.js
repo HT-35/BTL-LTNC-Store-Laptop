@@ -6,7 +6,7 @@ const {
   removeProductInCartService,
 } = require("../services/mysql/cart.services");
 
-const { getDetailProductByID } = require("../services/product.service");
+const { getDetailProductByID } = require("../services/product.services");
 
 const productModel = require("../models/models Mongodb/Product.model.mongodb");
 const { default: mongoose } = require("mongoose");

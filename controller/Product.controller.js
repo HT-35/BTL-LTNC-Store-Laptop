@@ -9,7 +9,7 @@ const {
   getDetailProductBySlug,
   updateDataProductbySlug,
   deleteProductBySlug,
-} = require("../services/product.service");
+} = require("../services/product.services");
 
 const createProductController = async (req, res) => {
   try {

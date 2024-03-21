@@ -8,7 +8,7 @@ const {
 
 const loginRouter = require("express").Router();
 
-loginRouter.get("/", loginUserCotroller);
+loginRouter.post("/", loginUserCotroller);
 // loginRouter.get("/", loginUserCotroller);
 
 module.exports = {

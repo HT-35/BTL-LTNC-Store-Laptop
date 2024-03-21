@@ -13,6 +13,7 @@ module.exports = {
       id_user: {
         type: Sequelize.INTEGER,
         allowNull: false,
+        unique: true, // Đảm bảo mỗi bản ghi trong "CartUsers" chỉ được liên kết với một bản ghi trong "UserMysqls"
       },
       id_product: {
         type: Sequelize.STRING,
@@ -41,7 +42,7 @@ module.exports = {
         table: "UserMysqls",
         field: "id",
       },
-      onDelete: "CASCADE",
+      onDelete: "CASCADE", // Xóa các bản ghi trong "CartUsers" khi bản ghi tương ứng trong "UserMysqls" bị xóa
     });
   },
   down: async (queryInterface, Sequelize) => {

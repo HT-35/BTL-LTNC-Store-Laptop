@@ -1,6 +1,9 @@
 const express = require("express");
 const {
-  createDeliveryAddress,
+  createDeliveryAddressController,
+  getAllDeliveryAddressController,
+  updateDeliveryAddressController,
+  deleteDeliveryAddressController,
 } = require("../controller/deliveryAddress.controller");
 
 const {
@@ -12,8 +15,27 @@ const {
 
 const deliveryAddressRouter = express.Router();
 
-deliveryAddressRouter.post("/", authenticationLogin, createDeliveryAddress);
+deliveryAddressRouter.post(
+  "/",
+  authenticationLogin,
+  createDeliveryAddressController
+);
+deliveryAddressRouter.get(
+  "/",
+  authenticationLogin,
+  getAllDeliveryAddressController
+);
 
+deliveryAddressRouter.patch(
+  "/",
+  authenticationLogin,
+  updateDeliveryAddressController
+);
+deliveryAddressRouter.delete(
+  "/:id",
+  authenticationLogin,
+  deleteDeliveryAddressController
+);
 module.exports = {
   deliveryAddressRouter,
 };

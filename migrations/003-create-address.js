@@ -1,26 +1,31 @@
 "use strict";
-
+/** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    // Create the 'Bills' table
-    await queryInterface.createTable("Bills", {
+    await queryInterface.createTable("Addresses", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      id_user: {
-        type: Sequelize.INTEGER,
+      id_User: {
         allowNull: false,
+        type: Sequelize.INTEGER,
       },
-      total: {
-        type: Sequelize.INTEGER,
+
+      email_address: {
         allowNull: false,
+        type: Sequelize.STRING,
       },
-      billing_info_id: {
-        type: Sequelize.INTEGER,
+      numberPhone: {
         allowNull: false,
+        type: Sequelize.INTEGER,
+      },
+      address: {
+        allowNull: false,
+        unique: true,
+        type: Sequelize.STRING,
       },
       createdAt: {
         allowNull: false,
@@ -31,12 +36,11 @@ module.exports = {
         type: Sequelize.DATE,
       },
     });
-
     // Add foreign key constraint
-    await queryInterface.addConstraint("Bills", {
-      fields: ["id_user"],
+    await queryInterface.addConstraint("Addresses", {
+      fields: ["id_User"],
       type: "foreign key",
-      name: "Bills_id_user_fk",
+      name: "Addresses_id_User_fk",
       references: {
         table: "UserMysqls",
         field: "id",
@@ -45,11 +49,7 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    // Remove foreign key constraints
-    await queryInterface.removeConstraint("Bills", "Bills_id_user_fk");
-    await queryInterface.removeConstraint("Bills", "Bills_billing_info_id_fk");
-
-    // Drop the 'Bills' table
-    await queryInterface.dropTable("Bills");
+    await queryInterface.removeConstraint("Addresses", "Addresses_id_User_fk");
+    await queryInterface.dropTable("Addresses");
   },
 };
