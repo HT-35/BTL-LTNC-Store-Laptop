@@ -1,6 +1,9 @@
 const billRouter = require("express").Router();
 
-const { createBillController } = require("../controller/bill.controller");
+const {
+  createBillController,
+  getBillAllController,
+} = require("../controller/bill.controller");
 const {
   authenticationLogin,
 } = require("../middlewares/authentication.middlewates");
@@ -9,6 +12,8 @@ const {
 } = require("../middlewares/authorization.middleware");
 
 billRouter.post("/", authenticationLogin, createBillController);
+
+billRouter.get("/detail", authenticationLogin, getBillAllController);
 
 module.exports = {
   billRouter,

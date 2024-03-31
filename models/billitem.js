@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       BillItem.belongsTo(Bill, {
         foreignKey: "id_Bill",
-        as: "itemBill",
+        as: "Bill", // Đổi tên alias thành "Bill"
       });
     }
   }

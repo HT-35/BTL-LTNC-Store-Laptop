@@ -20,8 +20,8 @@ module.exports = (sequelize, DataTypes) => {
       });
 
       Bill.hasMany(BillItem, {
-        foreignKey: "id",
-        as: "Billitem",
+        foreignKey: "id_Bill", // Sử dụng chính xác tên của khóa ngoại trong BillItem
+        as: "Billitems", // Sửa thành "Billitems" để phản ánh mối quan hệ nhiều-đến-một
       });
     }
   }
