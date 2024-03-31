@@ -70,6 +70,8 @@ const createBillController = async (req, res) => {
 };
 
 const getBillAllController = async (req, res) => {
+log
+
   try {
     const id_user = req.infoUser.id;
 
