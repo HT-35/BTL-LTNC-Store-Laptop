@@ -21,10 +21,14 @@ const createUserController = async (req, res) => {
     const { passWord } = data;
 
     if (!data) {
-      res.status(200).json({
+      res.status(400).json({
         status: false,
-        data: createUser,
+        data: "missing data",
       });
+    }
+
+    if (!data.role) {
+      req.body.role = "customer";
     }
 
     const encryptionPassword = await EncryptionUtils(passWord);

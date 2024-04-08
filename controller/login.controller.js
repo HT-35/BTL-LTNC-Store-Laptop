@@ -12,8 +12,7 @@ const loginUserCotroller = async (req, res) => {
   try {
     const { username, password } = req.body;
 
-    console.log({ username, password } );
-
+    console.log({ username, password });
 
     if (!username || !password) {
       return res.status(404).json({
@@ -50,6 +49,7 @@ const loginUserCotroller = async (req, res) => {
       return res.status(200).json({
         status: true,
         token: encryptionData,
+        fullName: fullName,
       });
     } else {
       return res.status(404).json({
