@@ -10,7 +10,12 @@ const storage = multer.diskStorage({
     cb(null, req.originalname);
   },
 });
-const upload = multer({ storage: storage });
+//const upload = multer({ storage: storage });
+
+const upload = multer({ storage: storage }).fields([
+  { name: "option[0][storage][0][colors][0][image]" },
+  { name: "option[1][storage][0][colors][0][image]" },
+]);
 
 const {
   createProductController,
@@ -21,18 +26,10 @@ const {
 } = require("../controller/Product.controller");
 
 //    [http://localhost:3000/product/create]
-productRouter.post(
-  "/create",
-  upload.array("photos", 12),
-  createProductController
-);
+productRouter.post("/create", upload, createProductController);
 
 //    http://localhost:3000/product/update/:slug
-productRouter.put(
-  "/update/:slug",
-  upload.array("photos", 12),
-  UpdateDetailBySlugController
-);
+productRouter.put("/update/:slug", upload, UpdateDetailBySlugController);
 
 // http://localhost:3000/product/:id
 productRouter.get("/:slug", getDetailBySlugController);
