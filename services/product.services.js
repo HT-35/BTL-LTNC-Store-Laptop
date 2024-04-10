@@ -11,7 +11,8 @@ const createProductService = async (data) => {
     const createProductDatabase = await productModel.create(data);
     return createProductDatabase;
   } catch (error) {
-    return error;
+    console.log(error);
+    throw error;
   }
 };
 

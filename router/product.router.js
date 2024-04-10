@@ -13,8 +13,8 @@ const storage = multer.diskStorage({
 //const upload = multer({ storage: storage });
 
 const upload = multer({ storage: storage }).fields([
-  { name: "option[0][storage][0][colors][0][image]" },
-  { name: "option[1][storage][0][colors][0][image]" },
+  { name: "img[0][color][0]" },
+  { name: "img[1][color][0]" },
 ]);
 
 const {

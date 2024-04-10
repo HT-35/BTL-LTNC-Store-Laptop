@@ -13,52 +13,74 @@ const {
 
 const createProductController = async (req, res) => {
   try {
-    //const image = req.files;
+    // path Img lấy từ multer
+    const image = req.files;
 
-    //const pathImg = image.map((item) => ({ path: item.path }));
-    //if (image.length === 0) {
-    //  return res.status(404).json({
-    //    status: false,
-    //    data: "Missing Image",
-    //  });
-    //}
-
-    // Hoặc sử dụng phương thức map
-    //const stringArr = pathImg.map((img) => img.path);
-
-    // console.log(pathObj);
-    //req.body.image = stringArr;
-
+    // data từ body
     const data = req.body;
-    console.log("createProductController ~ data:", data);
 
-    //const { nameLaptop } = data;
+    const { nameLaptop, ram, storage } = data;
+    //console.log("createProductController ~ data:", data);
 
-    //// Bước 1: Xác định và loại bỏ các phần không mong muốn
-    //const desiredPart = nameLaptop.split("/").shift(); // Lấy phần trước dấu "/"
-    //const cleanedName = desiredPart.replace(/[^\w\s]/gi, ""); // Loại bỏ các ký tự không phải là chữ cái hoặc số
+    //
+    const newData = data;
 
-    //// Bước 2: Thay thế khoảng trắng bằng dấu gạch ngang
-    //const slug = cleanedName.replace(/\s+/g, "-");
+    // lấy trường img trong data
+    const img = data.img;
 
-    //data.slug = slug;
-    //// console.log(slug);
-    //if (!data) {
-    //  return res.status(404).json({
-    //    status: false,
-    //    data: "missing data !!",
-    //  });
-    //}
+    // === === === === ===   Gộp trường multer Img vào trường Corlor  === === === === ===
+    img.forEach((item, index) => {
+      item[`img[${index}][color][0]`] = image[`img[${index}][color][0]`];
+    });
 
-    //const createProduct = await createProductService(data);
-    //// console.log(createProduct);
+    //console.log("createProductController ~ img:", img);
 
+    // === === === === ===   Chỉ lấy Path trong trường   === === === === ===
+    let filteredIMG = img.map((item, index) => ({
+      color: item.color,
+      path: item[`img[${index}][color][0]`].map((element) =>
+        element.path.toString()
+      ),
+    }));
+
+    // === === === === ===   Tạo Slug   === === === === ===
+
+    const newNameLaptop = nameLaptop.trim().toLowerCase().split(" ").join("-");
+
+    const newSlug = `${newNameLaptop}-${ram}-${storage}`;
+    newData.slug = newSlug;
+
+    newData.img = filteredIMG;
+
+    const createProduct = await createProductService(newData);
+
+    console.log(createProduct);
+    if (createProduct.status == false) {
+      if (createProduct.code === 11000) {
+        return res.status(404).json({
+          status: false,
+          error: " E11000 duplicate key error collection",
+          data: createProduct,
+        });
+      }
+      return res.status(404).json({
+        status: false,
+        data: createProduct,
+      });
+    }
     res.status(200).json({
       status: true,
-      data: data,
+      data: createProduct,
     });
   } catch (error) {
     console.log(error);
+    if (error.code === 11000) {
+      return res.status(404).json({
+        status: false,
+        error: " E11000 duplicate key error collection",
+        data: error,
+      });
+    }
     res.status(404).json({
       status: false,
       data: error,

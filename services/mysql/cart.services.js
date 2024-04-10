@@ -29,25 +29,36 @@ const findCartbyIdUserService = async (id) => {
 
 const addProductToCartService = async (newProduct) => {
   try {
+    console.log(newProduct);
     const addProduct = await CartUser.create(newProduct);
+    //console.log("addProductToCartService ~ addProduct:", addProduct);
     return addProduct;
   } catch (error) {
-    throw new Error("lỗi rồi" + error.message);
+    throw new Error("lỗi rồi " + error.message);
   }
 };
 
-const findProductDetailCardService = async (id_user, id_product) => {
+const findProductDetailCardService = async (id_user, id_product, color) => {
   try {
     if (!id_user) return "Service Missing id";
     const findProductDetailCard = await CartUser.findAll({
+      attributes: [
+        "id",
+        "id_user",
+        "id_product",
+        "quantity",
+        "color",
+        "createdAt",
+        "updatedAt",
+      ], // Chỉ chọn các cột được định nghĩa trong model
       where: {
-        [Op.and]: [{ id_user: id_user }, { id_product: id_product }],
+        [Op.and]: [
+          { id_user: id_user },
+          { id_product: id_product },
+          { color: color },
+        ],
       },
     });
-
-    // console.log("====================================");
-    // console.log("service:  ", findProductDetailCard.length);
-    // console.log("====================================");
 
     if (!findProductDetailCard.length) {
       return null;

@@ -4,9 +4,7 @@ const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class CartUser extends Model {
     static associate({ UserMysql }) {
-      // define association here
-
-      CartUser.belongsTo(UserMysql);
+      CartUser.belongsTo(UserMysql, { foreignKey: "id_user" });
     }
   }
   CartUser.init(
@@ -20,7 +18,6 @@ module.exports = (sequelize, DataTypes) => {
       id_user: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        unique: true,
       },
       id_product: {
         type: DataTypes.STRING,
@@ -29,6 +26,9 @@ module.exports = (sequelize, DataTypes) => {
       quantity: {
         type: DataTypes.INTEGER,
         allowNull: false,
+      },
+      color: {
+        type: DataTypes.STRING,
       },
     },
     {

@@ -14,6 +14,9 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
+      color: {
+        type: Sequelize.STRING,
+      },
       slug_Product: {
         type: Sequelize.STRING,
         allowNull: false,

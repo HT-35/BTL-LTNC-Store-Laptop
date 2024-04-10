@@ -2,6 +2,24 @@ const mongoose = require("mongoose");
 
 const { Schema } = mongoose;
 
+// Schema cho mỗi màu sắc
+const ColorSchema = new mongoose.Schema({
+  color: String,
+  price: Number,
+});
+
+// Schema cho mỗi tùy chọn lưu trữ
+const StorageSchema = new mongoose.Schema({
+  size: String,
+  colors: [ColorSchema],
+});
+
+// Schema cho mỗi tùy chọn RAM và các tùy chọn lưu trữ tương ứng
+const OptionSchema = new mongoose.Schema({
+  ram: String,
+  storage: [StorageSchema],
+});
+
 //const optionColor = new Schema({
 //  optionColor: String,
 //  price: String,
@@ -16,17 +34,6 @@ const { Schema } = mongoose;
 //  optionMemory: String,
 //  price: String,
 //});
-
-const ColorSchema = new mongoose.Schema({
-  color: String,
-  price: Number,
-  image: String,
-});
-
-const StorageSchema = new mongoose.Schema({
-  size: String,
-  colors: [ColorSchema],
-});
 
 const processor = new Schema({
   cpuTechnology: String,
@@ -81,8 +88,7 @@ const otherInformation = new Schema({
 const product = new Schema({
   nameLaptop: String,
 
-  ram: String,
-  storage: [StorageSchema],
+  option: [OptionSchema],
 
   //optionColorPrice: [optionColor],
   //optionRamPrice: [optionRam],

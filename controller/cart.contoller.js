@@ -21,14 +21,21 @@ const findCartUserController = async (req, res) => {
     const listIDProduct = findCartbyUserId.map((item) => {
       return item.dataValues;
     });
+
     const product = [];
     for (const [index, item] of listIDProduct.entries()) {
-      const { id_product, quantity } = item;
+      const { id_product, quantity, color } = item;
+      //console.log(id_product, quantity, color);
       const _id = new mongoose.Types.ObjectId(id_product);
       const findProduct = await getDetailProductByID({ _id });
+      //const price = findProduct.colors.price;
+      const listPrice = findProduct.colors.filter((item) => item.color);
+      const priceOption = listPrice.filter((item) => item.color === color);
+      const price = priceOption[0].price;
+      console.log(price);
 
       let number = index + 1;
-      product.push({ number, ...findProduct._doc, quantity });
+      product.push({ number, ...findProduct._doc, quantity, color, price });
     }
     res.status(200).json({
       status: true,
@@ -45,41 +52,38 @@ const findCartUserController = async (req, res) => {
 
 const addProductToCartController = async (req, res) => {
   try {
-    const { id_product, quantity } = req.body;
+    const { id_product, quantity, color } = req.body;
     const id_user = req.infoUser.id;
-
     if (!id_product || !quantity) {
       return res.status(200).json({
-        status: true,
+        status: false,
         data: "missing id_product or quantity",
       });
     }
-
-    const newProduct = { id_user, id_product, quantity };
+    const newProduct = { id_user, id_product, quantity, color };
 
     // const id = "65e48eae2800f32258331de2";
+    const findProduct = await findProductDetailCardService(
+      id_user,
+      id_product,
+      color
+    );
 
-    const findProduct = await findProductDetailCardService(id_user, id_product);
-    console.log("====================================");
-    console.log("findProduct:    ", findProduct);
-    console.log("====================================");
     if (findProduct !== null) {
       const arrQuatity = findProduct.map((item) => item.quantity);
-
       const newQuantity = arrQuatity.reduce((newValue, currentValue) => {
         return Number(newValue + currentValue);
       }, Number(quantity));
-
       const updateCart = await increaseQuantityCartServer({
         id_user,
         id_product,
         newQuantity,
       });
-      console.log(updateCart);
+      console.log("updateCart:   ", updateCart);
       const findProductCurrent = await findProductDetailCardService(
         id_user,
-
-        id_product
+        id_product,
+        color
       );
       return res.status(200).json({
         status: true,
@@ -87,6 +91,7 @@ const addProductToCartController = async (req, res) => {
         data: findProductCurrent,
       });
     }
+
     const addProduct = await addProductToCartService(newProduct);
     res.status(200).json({
       status: true,

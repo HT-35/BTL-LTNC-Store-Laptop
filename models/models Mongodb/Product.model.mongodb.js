@@ -93,9 +93,22 @@
 //  productModel,
 //};
 
+//==========================================================================================
+
 const mongoose = require("mongoose");
 
 const { Schema } = mongoose;
+
+// Schema cho mỗi màu sắc
+const ColorSchema = new mongoose.Schema({
+  color: String,
+  price: Number,
+});
+
+const ImgSchema = new mongoose.Schema({
+  color: String,
+  path: [String], // Sử dụng mảng để lưu nhiều đường dẫn hình ảnh
+});
 
 //const optionColor = new Schema({
 //  optionColor: String,
@@ -111,17 +124,6 @@ const { Schema } = mongoose;
 //  optionMemory: String,
 //  price: String,
 //});
-
-const ColorSchema = new mongoose.Schema({
-  color: String,
-  price: Number,
-  image: String,
-});
-
-const StorageSchema = new mongoose.Schema({
-  size: String,
-  colors: [ColorSchema],
-});
 
 const processor = new Schema({
   cpuTechnology: String,
@@ -177,15 +179,20 @@ const product = new Schema({
   nameLaptop: String,
 
   ram: String,
-  storage: [StorageSchema],
+  storage: String,
+
+  colors: [ColorSchema],
 
   //optionColorPrice: [optionColor],
   //optionRamPrice: [optionRam],
   //optionMemoryPrice: [optionMemory],
 
-  price: String,
-  image: [String],
-  slug: String,
+  img: [ImgSchema],
+
+  slug: {
+    type: String,
+    unique: true,
+  },
   productInformation: String,
   Specifications: {
     processor,

@@ -13,11 +13,13 @@ module.exports = {
       id_user: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        unique: true, // Đảm bảo mỗi bản ghi trong "CartUsers" chỉ được liên kết với một bản ghi trong "UserMysqls"
       },
       id_product: {
         type: Sequelize.STRING,
         allowNull: false,
+      },
+      color: {
+        type: Sequelize.STRING,
       },
       quantity: {
         type: Sequelize.INTEGER,
