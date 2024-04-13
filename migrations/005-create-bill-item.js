@@ -16,6 +16,7 @@ module.exports = {
       },
       color: {
         type: Sequelize.STRING,
+        allowNull: false,
       },
       slug_Product: {
         type: Sequelize.STRING,
@@ -26,7 +27,7 @@ module.exports = {
         allowNull: false,
       },
       price_per_unit: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
         allowNull: false,
       },
       createdAt: {

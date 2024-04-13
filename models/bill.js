@@ -29,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       id_address: DataTypes.NUMBER,
       id_user: DataTypes.NUMBER,
-      total: DataTypes.NUMBER,
+      total: DataTypes.STRING,
     },
     {
       sequelize,

@@ -29,7 +29,6 @@ const findCartbyIdUserService = async (id) => {
 
 const addProductToCartService = async (newProduct) => {
   try {
-    console.log(newProduct);
     const addProduct = await CartUser.create(newProduct);
     //console.log("addProductToCartService ~ addProduct:", addProduct);
     return addProduct;
@@ -69,27 +68,29 @@ const findProductDetailCardService = async (id_user, id_product, color) => {
   }
 };
 
-const increaseQuantityCartServer = async ({
+const increaseQuantityCartServer = async (
   id_user,
   id_product,
+  color,
   newQuantity,
-  defaultQuantity,
-}) => {
+  defaultQuantity
+) => {
   try {
-    if (!id_product) return "Service Missing id_product";
+    if (!id_product || !newQuantity || !color)
+      return "Service Missing id_product";
 
     const increaseProduct = await CartUser.update(
       { quantity: newQuantity || defaultQuantity },
       {
         where: {
-          [Op.and]: [{ id_user: id_user }, { id_product: id_product }],
+          [Op.and]: [
+            { id_user: id_user },
+            { id_product: id_product },
+            { color: color },
+          ],
         },
       }
     );
-
-    // console.log("====================================");
-    // console.log(increaseProduct);
-    // console.log("====================================");
 
     return increaseProduct;
   } catch (error) {

@@ -14,16 +14,25 @@ const createBillController = async (req, res) => {
 
     let total = 0;
 
-    const { id_product, quanlity, email_address, numberPhone, id_address } =
-      req.body;
+    const { id_product, quanlity, color, id_address } = req.body;
+
+    //console.log(color);
+    //console.log(id_product, quanlity, color, id_address);
 
     let arrPrice = [];
 
     // tinh tong ToTal để tạo db Bill
     for (let i = 0; i < id_product.length; i++) {
       const findProduct = await getDetailProductBySlug(id_product[i]);
+      console.log(id_product[i]);
 
-      const { price } = findProduct;
+      //console.log("findProduct:     ", findProduct);
+
+      const isPrice = findProduct.colors.filter(
+        (item) => item.color === color[i]
+      );
+      console.log("createBillController ~ isPrice:", isPrice);
+      const price = isPrice[0].price;
 
       let priceProduct = Number(price * quanlity[i]);
 
@@ -33,33 +42,34 @@ const createBillController = async (req, res) => {
     }
     const createBill = await createBillService({ id_user, id_address, total });
 
+    console.log(createBill);
+
     const id_Bill = createBill.dataValues.id;
+
     // tao từng Bill Item
     for (let i = 0; i < id_product.length; i++) {
       const idProductItem = id_product[i];
       const quanlityItem = quanlity[i];
       const price_per_unit = arrPrice[i];
+      const newColor = color[i];
 
-      console.log(id_Bill, idProductItem, quanlityItem, price_per_unit);
+      //console.log(id_Bill, idProductItem, quanlityItem, price_per_unit);
 
       const data = {
         id_Bill,
-        id_product: idProductItem,
+        slug_Product: idProductItem,
         quanlity: quanlityItem,
         price_per_unit,
+        color: newColor,
       };
 
-      const createBillItem = await createBillItembyIdBill(
-        id_Bill,
-        idProductItem,
-        quanlityItem,
-        price_per_unit
-      );
+      const createBillItem = await createBillItembyIdBill(data);
+      createBillItem;
     }
 
     res.status(200).json({
       status: true,
-      data: createBill,
+      data: arrPrice,
     });
   } catch (error) {
     res.status(400).json({
@@ -70,8 +80,6 @@ const createBillController = async (req, res) => {
 };
 
 const getBillAllController = async (req, res) => {
-log
-
   try {
     const id_user = req.infoUser.id;
 

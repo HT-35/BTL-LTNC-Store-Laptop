@@ -28,14 +28,18 @@ const findCartUserController = async (req, res) => {
       //console.log(id_product, quantity, color);
       const _id = new mongoose.Types.ObjectId(id_product);
       const findProduct = await getDetailProductByID({ _id });
-      //const price = findProduct.colors.price;
-      const listPrice = findProduct.colors.filter((item) => item.color);
-      const priceOption = listPrice.filter((item) => item.color === color);
-      const price = priceOption[0].price;
-      console.log(price);
 
-      let number = index + 1;
-      product.push({ number, ...findProduct._doc, quantity, color, price });
+      if (findProduct) {
+        const listPrice = findProduct.colors.filter(
+          (item) => item && item.color
+        );
+
+        const priceOption = listPrice.filter((item) => item.color === color);
+        const price = priceOption[0].price;
+
+        let number = index + 1;
+        product.push({ number, ...findProduct._doc, quantity, color, price });
+      }
     }
     res.status(200).json({
       status: true,
@@ -71,15 +75,22 @@ const addProductToCartController = async (req, res) => {
 
     if (findProduct !== null) {
       const arrQuatity = findProduct.map((item) => item.quantity);
-      const newQuantity = arrQuatity.reduce((newValue, currentValue) => {
+      let newQuantity = arrQuatity.reduce((newValue, currentValue) => {
         return Number(newValue + currentValue);
       }, Number(quantity));
-      const updateCart = await increaseQuantityCartServer({
+
+      if (newQuantity >= 10) {
+        newQuantity = 10;
+      }
+      console.log(id_user, id_product, color, newQuantity);
+
+      const updateCart = await increaseQuantityCartServer(
         id_user,
         id_product,
-        newQuantity,
-      });
-      console.log("updateCart:   ", updateCart);
+        color,
+        newQuantity
+      );
+      console.log(updateCart);
       const findProductCurrent = await findProductDetailCardService(
         id_user,
         id_product,
@@ -93,6 +104,7 @@ const addProductToCartController = async (req, res) => {
     }
 
     const addProduct = await addProductToCartService(newProduct);
+    console.log(addProduct);
     res.status(200).json({
       status: true,
       data: addProduct,
@@ -106,69 +118,75 @@ const addProductToCartController = async (req, res) => {
 };
 
 const reduceQuantityProductInCartController = async (req, res) => {
-  const { id_product, quantity } = req.body;
+  try {
+    const { id_product, quantity, color } = req.body;
 
-  if (!id_product || !quantity) {
-    return res.status(200).json({
-      status: true,
-      data: "missing id_product or quantity",
-    });
-  }
+    if (!id_product || !quantity || !color) {
+      return res.status(404).json({
+        status: false,
+        data: "missing id_product or quantity or color",
+      });
+    }
 
-  const id_user = req.infoUser.id;
-  const findProduct = await findProductDetailCardService(id_user, id_product);
-
-  console.log("now    :", findProduct);
-
-  if (!findProduct) {
-    return res.status(200).json({
-      status: true,
-      data: "Not Found  Product",
-    });
-  }
-
-  console.log(findProduct[0].dataValues.quantity);
-
-  console.log(quantity);
-
-  const newQuantity =
-    Number(findProduct[0].dataValues.quantity) - Number(quantity);
-  console.log(newQuantity);
-
-  if (newQuantity <= 1) {
-    let defaultQuantity = 1;
-    const updateCartQuantityOne = await increaseQuantityCartServer({
+    const id_user = req.infoUser.id;
+    const findProduct = await findProductDetailCardService(
       id_user,
       id_product,
-      defaultQuantity,
-    });
-    console.log(updateCartQuantityOne);
+      color
+    );
+
+    if (!findProduct) {
+      return res.status(200).json({
+        status: true,
+        data: "Not Found  Product",
+      });
+    }
+
+    //const newQuantity =
+    //  Number(findProduct[0].dataValues.quantity) - Number(quantity);
+
+    if (quantity <= 1) {
+      let defaultQuantity = 1;
+      const updateCartQuantityOne = await increaseQuantityCartServer(
+        id_user,
+        id_product,
+        color,
+        defaultQuantity
+      );
+      updateCartQuantityOne;
+      const findCurrentProduct = await findProductDetailCardService(
+        id_user,
+        id_product,
+        color
+      );
+      return res.status(200).json({
+        status: true,
+        data: findCurrentProduct,
+      });
+    }
+
+    const updateCart = await increaseQuantityCartServer(
+      id_user,
+      id_product,
+      color,
+      quantity
+    );
+    updateCart;
     const findCurrentProduct = await findProductDetailCardService(
       id_user,
-      id_product
+      id_product,
+      color
     );
-    return res.status(200).json({
+    res.status(200).json({
       status: true,
       data: findCurrentProduct,
     });
+  } catch (error) {
+    res.status(404).json({
+      status: false,
+      data: error.message,
+    });
   }
-
-  const updateCart = await increaseQuantityCartServer({
-    id_user,
-    id_product,
-    newQuantity,
-  });
-  console.log(updateCart);
-  const findCurrentProduct = await findProductDetailCardService(
-    id_user,
-    id_product
-  );
-  return res.status(200).json({
-    status: true,
-    data: findCurrentProduct,
-  });
-
-  // console.log(findProduct);
 };
 
 const removeProductInCartController = async (req, res) => {

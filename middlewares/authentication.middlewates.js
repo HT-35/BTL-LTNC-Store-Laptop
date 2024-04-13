@@ -7,7 +7,8 @@ require("dotenv").config();
 
 const authenticationLogin = async (req, res, next) => {
   try {
-    const { token } = req.body;
+    const token = req.body.token || req.header("Authorization");
+    console.log("authenticationLogin ~ token:", token);
 
     if (!token) {
       return res.status(400).json({
