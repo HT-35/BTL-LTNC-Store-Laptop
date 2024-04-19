@@ -116,6 +116,34 @@ const addProductToCartController = async (req, res) => {
     });
   }
 };
+const findCartUserDetailController = async (req, res) => {
+  try {
+    const { id_product, color } = req.quey;
+    const id_user = req.infoUser.id;
+    if (!id_product || !color) {
+      return res.status(200).json({
+        status: false,
+        data: "missing id_product or quantity",
+      });
+    }
+
+    const findProductDetail = await findProductDetailCardService(
+      id_user,
+      id_product,
+      color
+    );
+
+    res.status(200).json({
+      status: true,
+      data: findProductDetail,
+    });
+  } catch (error) {
+    res.status(404).json({
+      status: true,
+      data: error.message,
+    });
+  }
+};
 
 const reduceQuantityProductInCartController = async (req, res) => {
   try {
@@ -237,4 +265,5 @@ module.exports = {
   addProductToCartController,
   reduceQuantityProductInCartController,
   removeProductInCartController,
+  findCartUserDetailController,
 };

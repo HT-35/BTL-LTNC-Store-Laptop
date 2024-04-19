@@ -3,6 +3,7 @@ const {
   addProductToCartController,
   reduceQuantityProductInCartController,
   removeProductInCartController,
+  findCartUserDetailController,
 } = require("../controller/cart.contoller");
 
 const {
@@ -15,6 +16,7 @@ const {
 const cartRouter = require("express").Router();
 
 cartRouter.get("/", authenticationLogin, findCartUserController);
+cartRouter.get("/detail", authenticationLogin, findCartUserDetailController);
 
 cartRouter.post("/", authenticationLogin, addProductToCartController);
 
