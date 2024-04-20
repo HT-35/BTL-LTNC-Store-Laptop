@@ -4,6 +4,7 @@ const {
   getAllDeliveryAddressController,
   updateDeliveryAddressController,
   deleteDeliveryAddressController,
+  getDetailbyIdDeliveryAddressController,
 } = require("../controller/deliveryAddress.controller");
 
 const {
@@ -24,6 +25,11 @@ deliveryAddressRouter.get(
   "/",
   authenticationLogin,
   getAllDeliveryAddressController
+);
+deliveryAddressRouter.get(
+  "/detail/:idAddress",
+  authenticationLogin,
+  getDetailbyIdDeliveryAddressController
 );
 
 deliveryAddressRouter.patch(

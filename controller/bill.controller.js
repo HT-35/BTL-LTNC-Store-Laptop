@@ -1,6 +1,7 @@
 const {
   createBillService,
   findBillDetailService,
+  findBillAllByIDService,
 } = require("../services/mysql/bill.services");
 const { getDetailProductBySlug } = require("../services/product.services");
 
@@ -15,9 +16,6 @@ const createBillController = async (req, res) => {
     let total = 0;
 
     const { id_product, quanlity, color, id_address } = req.body;
-
-    //console.log(color);
-    //console.log(id_product, quanlity, color, id_address);
 
     let arrPrice = [];
 
@@ -69,7 +67,7 @@ const createBillController = async (req, res) => {
 
     res.status(200).json({
       status: true,
-      data: arrPrice,
+      data: createBill,
     });
   } catch (error) {
     res.status(400).json({
@@ -79,11 +77,11 @@ const createBillController = async (req, res) => {
   }
 };
 
-const getBillAllController = async (req, res) => {
+const getDetailBillByIdController = async (req, res) => {
   try {
     const id_user = req.infoUser.id;
 
-    const { idBill } = req.body;
+    const idBill = req.params.id;
 
     const findBillDetail = await findBillDetailService(idBill);
 
@@ -100,8 +98,28 @@ const getBillAllController = async (req, res) => {
     });
   }
 };
+const getBillAllController = async (req, res) => {
+  try {
+    const id_user = req.infoUser.id;
+
+    const findBillDetail = await findBillAllByIDService(id_user);
+
+    //console.log(findBillDetail);
+
+    res.status(200).json({
+      status: true,
+      data: findBillDetail,
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: false,
+      data: error.message,
+    });
+  }
+};
 
 module.exports = {
   createBillController,
+  getDetailBillByIdController,
   getBillAllController,
 };

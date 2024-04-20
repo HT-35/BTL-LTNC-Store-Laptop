@@ -118,7 +118,7 @@ const addProductToCartController = async (req, res) => {
 };
 const findCartUserDetailController = async (req, res) => {
   try {
-    const { id_product, color } = req.quey;
+    const { id_product, color } = req.query;
     const id_user = req.infoUser.id;
     if (!id_product || !color) {
       return res.status(200).json({

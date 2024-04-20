@@ -2,6 +2,7 @@ const billRouter = require("express").Router();
 
 const {
   createBillController,
+  getDetailBillByIdController,
   getBillAllController,
 } = require("../controller/bill.controller");
 const {
@@ -13,7 +14,8 @@ const {
 
 billRouter.post("/", authenticationLogin, createBillController);
 
-billRouter.get("/detail", authenticationLogin, getBillAllController);
+billRouter.get("/detail/:id", authenticationLogin, getDetailBillByIdController);
+billRouter.get("/", authenticationLogin, getBillAllController);
 
 module.exports = {
   billRouter,

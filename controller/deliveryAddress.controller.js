@@ -53,6 +53,27 @@ const getAllDeliveryAddressController = async (req, res) => {
   }
 };
 
+const getDetailbyIdDeliveryAddressController = async (req, res) => {
+  try {
+    const id_User = req.infoUser.id;
+    const id = req.params.idAddress;
+
+    const findAllDeliveryAddress = await findDetailDeliveryAddressService({
+      id,
+    });
+
+    res.status(200).json({
+      status: true,
+      data: findAllDeliveryAddress,
+    });
+  } catch (error) {
+    res.status(200).json({
+      status: true,
+      data: error.message,
+    });
+  }
+};
+
 const updateDeliveryAddressController = async (req, res) => {
   try {
     const id_User = req.infoUser.id;
@@ -123,6 +144,7 @@ const deleteDeliveryAddressController = async (req, res) => {
 module.exports = {
   createDeliveryAddressController,
   getAllDeliveryAddressController,
+  getDetailbyIdDeliveryAddressController,
   updateDeliveryAddressController,
   deleteDeliveryAddressController,
 };
