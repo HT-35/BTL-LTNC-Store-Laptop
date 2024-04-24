@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const { token, fullName } = res;
         console.log({ token, fullName });
         showProfile(token, fullName);
-        window.location.href = "http://221.132.33.175:3000/index.html";
+        window.location.href = "http://221.132.33.175/index.html";
       } else {
         const template = `<span class="text-danger">Tài Khoản Hoặc Mật Khẩu Sai !!</span>`;
         notifi.insertAdjacentHTML("beforeend", template);

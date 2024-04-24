@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const res = await fetchGetAllCard("http://221.132.33.175:3000/cart", token);
   if (res.status === false) {
-    window.location.href = "/login.html";
+    window.location.href = "http://221.132.33.175/login.html";
   }
 
   const product = res.data;

@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     insertInfo.insertAdjacentHTML("beforeend", templateUser);
   } else {
-    window.location.href = "./login.html";
+    window.location.href = "http://221.132.33.175/login.html";
   }
 
   //  === === === === === === === === === ===   Check URL    === === === === === === === === === ===
@@ -225,7 +225,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   btnSignout.addEventListener("click", () => {
     localStorage.removeItem("accessToken");
     localStorage.removeItem("userName");
-    window.location.href = "/index.html";
+    window.location.href = "http://221.132.33.175/index.html";
   });
 
   // =================================== Get Detail Accout   =================================

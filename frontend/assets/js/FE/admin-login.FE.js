@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const { token, fullName } = res;
         console.log({ token, fullName });
         showProfile(token, fullName);
-        window.location.href = "http://221.132.33.175:3000/admin-dashboad.html";
+        window.location.href = "http://221.132.33.175/admin-dashboad.html";
       } else {
         if ((res.data = "user does not have permission !!!")) {
           const template = `<span class="text-danger">Bạn Không Có Quyền Truy Cập !!!</span>`;

@@ -544,7 +544,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       cart
     );
     if (!addCartProduct.status) {
-      window.location.href = "./login.html";
+      window.location.href = "http://221.132.33.175/login.html";
     }
     console.log(addCartProduct);
   });
@@ -558,7 +558,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     //};
     //console.log("cart:", cart);
 
-    window.location.href = `./checkout.html?product=${uriProduct}&color=${color}`;
+    window.location.href = `http://221.132.33.175/checkout.html?product=${uriProduct}&color=${color}`;
   });
 });
 

@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     insertInfo.insertAdjacentHTML("beforeend", templateUser);
   } else {
-    window.location.href = "./login.html";
+    window.location.href = "http://221.132.33.175/login.html";
   }
 
   // ====================    Form Product  ==============================
