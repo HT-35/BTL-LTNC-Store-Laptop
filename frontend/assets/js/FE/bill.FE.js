@@ -24,12 +24,12 @@ document.addEventListener("DOMContentLoaded", async () => {
   const url = new URL(window.location.href);
   const idBill = url.searchParams.get("bill");
   const getDetailBill = await callApiMethodGet(
-    `http://localhost:3000/bill/detail/${idBill}`,
+    `http://221.132.33.175/bill/detail/${idBill}`,
     localStorage.getItem("accessToken")
   );
   const { id_address, total } = getDetailBill?.data;
   const getDetailAddress = await callApiMethodGet(
-    `http://localhost:3000/delivery-address/detail/${id_address}`,
+    `http://221.132.33.175/delivery-address/detail/${id_address}`,
     localStorage.getItem("accessToken")
   );
   const { address, email_address, numberPhone } = getDetailAddress.data;
@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const { price_per_unit, quanlity, slug_Product, color } =
     getDetailBill?.data?.Billitems[0];
   const getDetailProduct = await callAPIFunction(
-    `http://localhost:3000/product/${slug_Product}`
+    `http://221.132.33.175/product/${slug_Product}`
   );
   const { nameLaptop, img } = getDetailProduct.data;
 

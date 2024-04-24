@@ -8,7 +8,7 @@ import {
 
 const addressInsert = document.querySelector(".address-insert");
 const token = localStorage.getItem("accessToken");
-const apiGetListAddress = "http://localhost:3000/delivery-address";
+const apiGetListAddress = "http://221.132.33.175/delivery-address";
 
 document.addEventListener("DOMContentLoaded", async () => {
   const insertInfo = document.querySelector("#insert-info");
@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   //console.log("color:", color);
 
   const res = await callAPIFunction(
-    `http://localhost:3000/product/${slugProduct}`
+    `http://221.132.33.175/product/${slugProduct}`
   );
   //console.log(res);
 
@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const pathImg = imgfilter[0].path[0];
   // === === === === === === Query Cart Get Quantity
   const getProductDetailInCard = await callApiMethodGet(
-    `http://localhost:3000/cart/detail?id_product=${_id}&color=${color}`,
+    `http://221.132.33.175/cart/detail?id_product=${_id}&color=${color}`,
     localStorage.getItem("accessToken")
   );
 
@@ -81,7 +81,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                           <div class="product">
                               <figure class="product-media">
                   
-                                      <img src="http://localhost:3000/${pathImg}"
+                                      <img src="http://221.132.33.175/${pathImg}"
                                           alt="Product image">
                       
                               </figure>
@@ -249,7 +249,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     //console.log(token);
 
     const createAddress = await callAPIMethodPost(
-      "http://localhost:3000/delivery-address",
+      "http://221.132.33.175/delivery-address",
       localStorage.getItem("accessToken"),
       address
     );
@@ -357,7 +357,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       color: [color],
     };
     const createBill = await callAPIMethodPost(
-      "http://localhost:3000/bill",
+      "http://221.132.33.175/bill",
       localStorage.getItem("accessToken"),
       bill
     );
@@ -369,7 +369,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     };
     console.log(product);
     const removeProduct = await callAPIMethodDelete(
-      "http://localhost:3000/cart/remove-product",
+      "http://221.132.33.175/cart/remove-product",
       localStorage.getItem("accessToken"),
       product
     );

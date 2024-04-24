@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   // ==========================  Get Detail Accout   =================================
   const user = await callApiMethodGet(
-    "http://localhost:3000/user/info-user",
+    "http://221.132.33.175/user/info-user",
     localStorage.getItem("accessToken")
   );
   const { email, fullName, numberPhone } = user.data;
@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const insertBill = document.querySelector("#insert-bill");
 
   const billList = await callApiMethodGet(
-    "http://localhost:3000/bill/get-all",
+    "http://221.132.33.175/bill/get-all",
     localStorage.getItem("accessToken")
   );
 
@@ -106,13 +106,13 @@ document.addEventListener("DOMContentLoaded", async () => {
     const { slug_Product, color, quanlity, createdAt } = item.Billitems[0];
 
     const address = await callApiMethodGet(
-      `http://localhost:3000/delivery-address/detail/${id_address}`,
+      `http://221.132.33.175/delivery-address/detail/${id_address}`,
       localStorage.getItem("accessToken")
     );
     const addressDetail = address.data.address;
 
     const product = await callApiMethodGet(
-      `http://localhost:3000/product/${slug_Product}`,
+      `http://221.132.33.175/product/${slug_Product}`,
       localStorage.getItem("accessToken")
     );
     const { nameLaptop, storage, ram } = product.data;
