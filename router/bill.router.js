@@ -4,6 +4,7 @@ const {
   createBillController,
   getDetailBillByIdController,
   getBillAllController,
+  getBillAllAdminController,
 } = require("../controller/bill.controller");
 const {
   authenticationLogin,
@@ -16,6 +17,7 @@ billRouter.post("/", authenticationLogin, createBillController);
 
 billRouter.get("/detail/:id", authenticationLogin, getDetailBillByIdController);
 billRouter.get("/", authenticationLogin, getBillAllController);
+billRouter.get("/get-all", authenticationLogin, getBillAllAdminController);
 
 module.exports = {
   billRouter,

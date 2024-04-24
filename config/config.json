@@ -3,8 +3,8 @@
     "username": "root",
     "password": "secret",
     "database": "StoreDB",
-    "host": "127.0.0.1",
-    "port": "3308",
+    "host": "mysql_store",
+    "port": "3306",
     "dialect": "mysql"
   },
   "test": {

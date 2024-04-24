@@ -15,9 +15,11 @@ const createProductController = async (req, res) => {
   try {
     // path Img lấy từ multer
     const image = req.files;
+    console.log("image:   ", image);
 
     // data từ body
     const data = req.body;
+    console.log("data:", data);
 
     const { nameLaptop, ram, storage } = data;
     //console.log("createProductController ~ data:", data);
@@ -27,12 +29,13 @@ const createProductController = async (req, res) => {
 
     // lấy trường img trong data
     const img = data.img;
+    console.log("img:", img);
 
     // === === === === ===   Gộp trường multer Img vào trường Corlor  === === === === ===
     img.forEach((item, index) => {
       item[`img[${index}][color][0]`] = image[`img[${index}][color][0]`];
     });
-
+    console.log("img:", img);
     //console.log("createProductController ~ img:", img);
 
     // === === === === ===   Chỉ lấy Path trong trường   === === === === ===
@@ -83,7 +86,7 @@ const createProductController = async (req, res) => {
     }
     res.status(404).json({
       status: false,
-      data: error,
+      data: error.message,
     });
   }
 };

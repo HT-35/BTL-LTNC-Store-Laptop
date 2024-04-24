@@ -2,9 +2,10 @@ const Sequelize = require("sequelize");
 const { float } = require("webidl-conversions");
 
 const sequelize = new Sequelize("StoreDB", "root", "secret", {
-  host: "127.0.0.1",
-  port: "3308",
+  //host: "127.0.0.1",
+  host: "mysql_store",
   dialect: "mysql",
+  port: "3306",
   logging: false,
 });
 try {

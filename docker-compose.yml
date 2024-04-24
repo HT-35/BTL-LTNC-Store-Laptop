@@ -1,10 +1,85 @@
-version: "3"
+#version: "3"
+#services:
+#  mysql:
+#    container_name: mysql_store
+#    image: mysql:8.0
+#    ports:
+#      - "3308:3306"
+#    volumes:
+#      - mysqlProject:/var/lib/mysql
+#    environment:
+#      MYSQL_ROOT_PASSWORD: secret
+#      MYSQL_DATABASE: StoreDB
+#    networks:
+#      - Store-compose-network
+#  mongo:
+#    container_name: mongo_store
+#    image: mongo:4.2
+#    ports:
+#      - 27039:27017
+#    environment:
+#      MONGO_INITDB_ROOT_USERNAME: root
+#      MONGO_INITDB_ROOT_PASSWORD: abc
+#    volumes:
+#      - ./docker-entrypoint-initdb.d/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+#      - dataStore:/data/db
+#    networks:
+#      - Store-compose-network
+#  mongo-express:
+#    container_name: mongo-express-Store
+#    image: mongo-express
+#    depends_on:
+#      - mongo
+#    ports:
+#      - 8087:8081 # Ánh xạ cổng 8087 của máy host vào cổng 8081 của container mongo-express
+#    environment:
+#      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+#      ME_CONFIG_MONGODB_ADMINPASSWORD: abc
+#      ME_CONFIG_MONGODB_SERVER: mongo_store
+#      ME_CONFIG_BASICAUTH_USERNAME: iuh
+#      ME_CONFIG_BASICAUTH_PASSWORD: abc
+#      ME_CONFIG_MONGODB_URL: mongodb://iuh:abc@mongo:27017/Store
+#    networks:
+#      - Store-compose-network
+
+#      # Container App
+#    app:
+#      image: node:21-alpine3.18
+#      command: sh -c "npm install && sleep 5  && npx sequelize db:migrate   && npm run dev"
+#      ports:
+#        - 127.0.0.1:3000:3000
+#      working_dir: /app
+#      volumes:
+#        - ./:/app
+#      # Thiết lập biến môi trường cho kết nối đến MySQL
+#      environment:
+#        # config mysql
+#        MYSQL_HOST: mysql_store # Sửa đổi địa chỉ host MySQL
+#        MYSQL_PORT: 3306
+#        MYSQL_USER: root
+#        MYSQL_PASSWORD: secret
+#        MYSQL_DB: StoreDB
+#        # config mongodb
+#        MONGO_HOST: mongo_store
+#        MONGO_PORT: 27017
+#        MONGO_user: root
+#        MONGO_PASSWORD: abc
+#        MONGO_DB: Store
+
+#networks:
+#  Store-compose-network:
+#    driver: bridge
+#volumes:
+#  dataStore:
+#  mysqlProject:
+
+version: "3.7"
 services:
   mysql:
     container_name: mysql_store
     image: mysql:8.0
     ports:
-      - "3308:3306"
+      - 3308:3306
     volumes:
       - mysqlProject:/var/lib/mysql
     environment:
@@ -12,6 +87,7 @@ services:
       MYSQL_DATABASE: StoreDB
     networks:
       - Store-compose-network
+
   mongo:
     container_name: mongo_store
     image: mongo:4.2
@@ -25,13 +101,14 @@ services:
       - dataStore:/data/db
     networks:
       - Store-compose-network
+
   mongo-express:
     container_name: mongo-express-Store
     image: mongo-express
     depends_on:
       - mongo
     ports:
-      - 8087:8081 # Ánh xạ cổng 8087 của máy host vào cổng 8081 của container mongo-express
+      - "8087:8081"
     environment:
       ME_CONFIG_MONGODB_ADMINUSERNAME: root
       ME_CONFIG_MONGODB_ADMINPASSWORD: abc
@@ -41,9 +118,33 @@ services:
       ME_CONFIG_MONGODB_URL: mongodb://iuh:abc@mongo:27017/Store
     networks:
       - Store-compose-network
+
+  app:
+    container_name: app_store
+    image: node:21-alpine3.18
+    command: sh -c "npm install && sleep 5 && npx sequelize db:migrate && npm run dev"
+    ports:
+      - 3000:3000
+    working_dir: /app
+    volumes:
+      - ./:/app
+    environment:
+      MYSQL_HOST: mysql_store
+      MYSQL_PORT: 3306
+      MYSQL_USER: root
+      MYSQL_PASSWORD: secret
+      MYSQL_DB: StoreDB
+      MONGO_HOST: mongo_store
+      MONGO_PORT: 27017
+      MONGO_USER: root
+      MONGO_PASSWORD: abc
+      MONGO_DB: Store
+    networks:
+      - Store-compose-network
+
 networks:
   Store-compose-network:
-    driver: bridge
+
 volumes:
   dataStore:
   mysqlProject:

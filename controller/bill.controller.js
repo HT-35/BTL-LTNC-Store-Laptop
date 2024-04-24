@@ -2,6 +2,7 @@ const {
   createBillService,
   findBillDetailService,
   findBillAllByIDService,
+  findBillAllAdminService,
 } = require("../services/mysql/bill.services");
 const { getDetailProductBySlug } = require("../services/product.services");
 
@@ -117,9 +118,27 @@ const getBillAllController = async (req, res) => {
     });
   }
 };
+const getBillAllAdminController = async (req, res) => {
+  try {
+    const findBillDetail = await findBillAllAdminService();
+
+    //console.log(findBillDetail);
+
+    res.status(200).json({
+      status: true,
+      data: findBillDetail,
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: false,
+      data: error.message,
+    });
+  }
+};
 
 module.exports = {
   createBillController,
   getDetailBillByIdController,
   getBillAllController,
+  getBillAllAdminController,
 };

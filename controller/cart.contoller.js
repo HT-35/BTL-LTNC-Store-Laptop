@@ -221,7 +221,7 @@ const removeProductInCartController = async (req, res) => {
   try {
     const id_user = req.infoUser.id;
 
-    const { id_product } = req.body;
+    const { id_product, color } = req.body;
     if (!id_product) {
       return res.status(200).json({
         status: true,
@@ -229,7 +229,11 @@ const removeProductInCartController = async (req, res) => {
       });
     }
 
-    const findProduct = await findProductDetailCardService(id_user, id_product);
+    const findProduct = await findProductDetailCardService(
+      id_user,
+      id_product,
+      color
+    );
     if (!findProduct) {
       return res.status(200).json({
         status: true,
@@ -240,6 +244,7 @@ const removeProductInCartController = async (req, res) => {
     const removeProductInCart = await removeProductInCartService({
       id_user,
       id_product,
+      color,
     });
 
     console.log("====================================");

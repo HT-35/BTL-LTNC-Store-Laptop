@@ -98,13 +98,13 @@ const increaseQuantityCartServer = async (
   }
 };
 
-const removeProductInCartService = async ({ id_user, id_product }) => {
+const removeProductInCartService = async ({ id_user, id_product, color }) => {
   try {
-    if (!id_user && !id_product) return "missing id_user, id_product";
+    if (!id_user && !id_product && !color) return "missing id_user, id_product";
 
     const removeProductInCart = await CartUser.destroy({
       where: {
-        [Op.and]: [{ id_user }, { id_product }],
+        [Op.and]: [{ id_user }, { id_product }, { color }],
       },
     });
     return removeProductInCart;

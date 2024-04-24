@@ -58,8 +58,28 @@ const findBillAllByIDService = async (id_user) => {
   }
 };
 
+const findBillAllAdminService = async () => {
+  try {
+    const findBillAll = await Bill.findAll({
+      include: [
+        {
+          model: BillItem,
+          as: "Billitems", // Sử dụng tên alias đã cập nhật của mối quan hệ
+        },
+      ],
+      order: [["createdAt", "DESC"]],
+    });
+
+    return findBillAll;
+  } catch (error) {
+    console.error("Lỗi khi tìm kiếm hóa đơn:", error);
+    throw error;
+  }
+};
+
 module.exports = {
   createBillService,
   findBillDetailService,
   findBillAllByIDService,
+  findBillAllAdminService,
 };

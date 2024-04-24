@@ -1,4 +1,13 @@
 const productRouter = require("express").Router();
+
+const {
+  createProductController,
+  getAllProductController,
+  getDetailBySlugController,
+  UpdateDetailBySlugController,
+  DeleteProductController,
+} = require("../controller/Product.controller");
+
 const multer = require("multer");
 
 const storage = multer.diskStorage({
@@ -17,13 +26,7 @@ const upload = multer({ storage: storage }).fields([
   { name: "img[1][color][0]" },
 ]);
 
-const {
-  createProductController,
-  getAllProductController,
-  getDetailBySlugController,
-  UpdateDetailBySlugController,
-  DeleteProductController,
-} = require("../controller/Product.controller");
+//const upload = multer({ storage: storage }).array("images", 10); // Xử lý tối đa 10 tệp hình ảnh được gửi
 
 //    [http://localhost:3000/product/create]
 productRouter.post("/create", upload, createProductController);

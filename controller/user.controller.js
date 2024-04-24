@@ -107,6 +107,22 @@ const findUserByEmailorPhoneNumber = async (req, res) => {
     });
   }
 };
+const findInfoUserByTokenController = async (req, res) => {
+  try {
+    const { fullName, email, numberPhone } = req.infoUser;
+    const user = { fullName, email, numberPhone };
+
+    res.status(200).json({
+      status: true,
+      data: user,
+    });
+  } catch (error) {
+    res.status(400).json({
+      status: false,
+      data: error,
+    });
+  }
+};
 
 const updateUserbyNumberPhoneOrEmail = async (req, res) => {
   const { slug } = req.params;
@@ -284,6 +300,7 @@ module.exports = {
   createUserController,
   findAllUserController,
   findUserByEmailorPhoneNumber,
+  findInfoUserByTokenController,
   updateUserbyNumberPhoneOrEmail,
   deleteUserbyNumberPhoneOrEmail,
   softDeleteUserbyNumberPhoneOrEmail,

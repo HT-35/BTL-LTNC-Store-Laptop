@@ -10,6 +10,7 @@ const {
   findDetailUserSoftDeletedController,
   restoreAllUserSoftDeletedController,
   restoreUserSoftDeletedController,
+  findInfoUserByTokenController,
 } = require("../controller/user.controller");
 
 const {
@@ -47,6 +48,13 @@ userRouter.get(
   findDetailUserSoftDeletedController
 );
 
+//   localhost:3000/user/:mail
+userRouter.get(
+  "/info-user",
+  authenticationLogin,
+  // authorizationAdmin,
+  findInfoUserByTokenController
+);
 //   localhost:3000/user/:mail
 userRouter.get(
   "/:slug",
