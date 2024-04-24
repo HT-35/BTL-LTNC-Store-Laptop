@@ -4,7 +4,7 @@ const { createProxyMiddleware } = require("http-proxy-middleware");
 const cors = require("cors");
 
 const exampleProxy = createProxyMiddleware({
-  target: "http://221.132.33.175:3000", // target host with the same base path
+  target: "http://localhost:3000", // target host with the same base path
   changeOrigin: true, // needed for virtual hosted sites
 });
 app.use("/", exampleProxy);
