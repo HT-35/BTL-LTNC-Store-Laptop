@@ -36,10 +36,9 @@ const createDeliveryAddressController = async (req, res) => {
 const getAllDeliveryAddressController = async (req, res) => {
   try {
     const id_User = req.infoUser.id;
+    console.log("id_User: ", id_User);
 
-    const findAllDeliveryAddress = await findAllDeliveryAddressService({
-      id_User,
-    });
+    const findAllDeliveryAddress = await findAllDeliveryAddressService(id_User);
 
     res.status(200).json({
       status: true,

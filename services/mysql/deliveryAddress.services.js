@@ -1,3 +1,4 @@
+const { where } = require("sequelize");
 const { Address } = require("../../models/index");
 
 const createDeliveryShippingService = async (data) => {
@@ -10,10 +11,15 @@ const createDeliveryShippingService = async (data) => {
     return error;
   }
 };
-const findAllDeliveryAddressService = async ({ id_User }) => {
+const findAllDeliveryAddressService = async (id_User) => {
   try {
     if (!id_User) return "service missing id_User";
-    const createDeleveryAddress = await Address.findAll({ id_User });
+    console.log(id_User);
+    const createDeleveryAddress = await Address.findAll({
+      where: {
+        id_User: id_User,
+      },
+    });
 
     return createDeleveryAddress;
   } catch (error) {
