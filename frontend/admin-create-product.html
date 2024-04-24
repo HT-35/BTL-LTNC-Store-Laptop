@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+    <!-- molla/dashboard.html  22 Nov 2019 10:03:13 GMT -->
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Molla - Bootstrap eCommerce Template</title>
+        <meta name="keywords" content="HTML5 Template">
+        <meta name="description" content="Molla - Bootstrap eCommerce Template">
+        <meta name="author" content="p-themes">
+        <!-- Favicon -->
+        <link rel="apple-touch-icon" sizes="180x180" href="assets/images/icons/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="assets/images/icons/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="assets/images/icons/favicon-16x16.png">
+        <link rel="manifest" href="assets/images/icons/site.html">
+        <link rel="mask-icon" href="assets/images/icons/safari-pinned-tab.svg" color="#666666">
+        <link rel="shortcut icon" href="assets/images/icons/favicon.ico">
+        <meta name="apple-mobile-web-app-title" content="Molla">
+        <meta name="application-name" content="Molla">
+        <meta name="msapplication-TileColor" content="#cc9966">
+        <meta name="msapplication-config" content="assets/images/icons/browserconfig.xml">
+        <meta name="theme-color" content="#ffffff">
+
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+
+
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+            integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+
+        <!-- Plugins CSS File -->
+        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+        <!-- Main CSS File -->
+        <link rel="stylesheet" href="assets/css/style.css">
+
+        <link rel="stylesheet" href="assets/css/daskboard.css">
+
+
+    </head>
+
+    <body>
+
+
+
+        <div class="page-wrapper">
+            <header class="header header-intro-clearance header-3">
+
+                <div class="header-middle">
+                    <div class="container">
+                        <div class="header-left">
+                            <a href="#" class="logo">
+                                <img src="assets/images/demos/demo-3/logo.png" alt="Molla Logo" width="115px">
+                            </a>
+                        </div><!-- End .header-left -->
+
+
+                        <div class="header-right">
+
+                            <div id="insert-info" class="">
+                                <div class="dropdown compare-dropdown">
+                                    <a href="#" class="dropdown-toggle" role="button">
+                                        <div class="icon">
+                                            <i class="fa-solid fa-right-to-bracket"></i>
+                                        </div>
+                                        <p style="color: #ffffff;">SIGN IN / SIGN UP</p>
+                                    </a>
+                                </div>
+
+
+
+                            </div>
+
+
+
+                        </div>
+                    </div><!-- End .container -->
+                </div><!-- End .header-middle -->
+
+
+            </header><!-- End .header -->
+
+            <div class="container mb-5">
+                <div class="row mt-2">
+                    <div class="col-12 col-sm-12 col-md-12 col-xl-12">
+
+                        <h2 class="text-center">Thêm Sản Phẩm</h2>
+                    </div>
+
+                </div>
+                <form action="http://localhost:3000/product/create" method="post" enctype="multipart/form-data"
+                    id="form-create-product">
+                    <div class="form-group">
+                        <label>Name Laptop</label>
+                        <input type="text" class="form-control" name="nameLaptop" placeholder="Name Laptop"
+                            value="Laptop ABC">
+                    </div>
+
+                    <div class="form-group">
+                        <label>RAM</label>
+                        <input type="text" class="form-control" name="ram" placeholder="RAM" value="8GB">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Storage</label>
+                        <input type="text" class="form-control" name="storage" placeholder="Storage" value="512GB SSD">
+                    </div>
+
+                    <!-- Input cho trường dữ liệu colors -->
+                    <div class="form-group">
+                        <label>Colors</label>
+                        <div id="colorsInputs">
+                            <div class="colorInput mb-2">
+                                <input type="text" class="form-control" name="colors[0][color]" placeholder="Color"
+                                    value="Yellow">
+                                <input type="number" class="form-control" name="colors[0][price]" placeholder="Price"
+                                    value="1000">
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-primary" onclick="addColorInput()">Add Color</button>
+                    </div>
+
+                    <!-- Input cho trường dữ liệu img -->
+                    <div class="form-group">
+                        <label>Images</label>
+                        <div id="imagesInputs">
+                            <div class="imgInput mb-2">
+                                <input type="text" value="Yellow" class="form-control" name="img[0][color]"
+                                    placeholder="Color">
+                                <input type="file" class="form-control-file" name="img[0][color][0]" accept="image/*"
+                                    multiple>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-primary" onclick="addImgInput()">Add Image</button>
+                    </div>
+                    <!-- end Input cho trường dữ liệu img -->
+
+                    <div class="form-group">
+                        <label>Slug</label>
+                        <input type="text" class="form-control" name="slug" placeholder="Slug" value="laptop-abc">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Product Information</label>
+                        <textarea class="form-control" name="productInformation"
+                            rows="3">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</textarea>
+                    </div>
+
+                    <!-- Specifications -->
+                    <div class="form-group">
+                        <h4>Specifications</h4>
+
+                        <!-- Processor -->
+                        <h5>Processor</h5>
+                        <input type="text" class="form-control" name="Specifications.processor.cpuTechnology"
+                            placeholder="CPU Technology" value="Intel Core i5">
+                        <input type="text" class="form-control" name="Specifications.processor.multiplier"
+                            placeholder="Multiplier" value="1.2">
+                        <input type="text" class="form-control" name="Specifications.processor.numberOfStreams"
+                            placeholder="Number of Streams" value="8">
+                        <input type="text" class="form-control" name="Specifications.processor.cpuSpeed"
+                            placeholder="CPU Speed" value="2.5 GHz">
+                        <input type="text" class="form-control" name="Specifications.processor.maxSpeed"
+                            placeholder="Max Speed" value="4.0 GHz">
+                        <input type="text" class="form-control" name="Specifications.processor.caching"
+                            placeholder="Caching" value="6MB">
+                        <!-- Add more processor fields if needed -->
+
+                        <!-- Ram Memory Hard Drive -->
+                        <h5>Ram Memory Hard Drive</h5>
+                        <input type="text" class="form-control" name="Specifications.ramMemory_hardDrive.ram"
+                            placeholder="RAM" value="8GB">
+                        <input type="text" class="form-control" name="Specifications.ramMemory_hardDrive.ramType"
+                            placeholder="RAM Type" value="DDR4">
+                        <input type="text" class="form-control" name="Specifications.ramMemory_hardDrive.ramBusSpeed"
+                            placeholder="RAM Bus Speed" value="3200 MHz">
+                        <input type="text" class="form-control"
+                            name="Specifications.ramMemory_hardDrive.MaximumRamSupport"
+                            placeholder="Maximum RAM Support" value="16GB">
+                        <input type="text" class="form-control" name="Specifications.ramMemory_hardDrive.HardDrive"
+                            placeholder="Hard Drive" value="512GB">
+                        <!-- Add more ramMemory_hardDrive fields if needed -->
+
+                        <!-- Screen -->
+                        <h5>Screen</h5>
+                        <input type="text" class="form-control" name="Specifications.screen.screen" placeholder="Screen"
+                            value="15.6 inches">
+                        <input type="text" class="form-control" name="Specifications.screen.resolution"
+                            placeholder="Resolution" value="1920x1080">
+                        <input type="text" class="form-control" name="Specifications.screen.scanFrequency"
+                            placeholder="Scan Frequency" value="60 Hz">
+                        <input type="text" class="form-control" name="Specifications.screen.colorCoverage"
+                            placeholder="Color Coverage" value="100%">
+                        <input type="text" class="form-control" name="Specifications.screen.screenTechnology"
+                            placeholder="Screen Technology" value="IPS">
+                        <!-- Add more screen fields if needed -->
+
+                        <!-- Graphics And Sound -->
+                        <h5>Graphics And Sound</h5>
+                        <input type="text" class="form-control" name="Specifications.graphicsAndSound.GraphicCard"
+                            placeholder="Graphic Card" value="NVIDIA GeForce GTX 1650">
+                        <input type="text" class="form-control" name="Specifications.graphicsAndSound.AudioTechnology"
+                            placeholder="Audio Technology" value="Dolby Audio">
+                        <!-- Add more graphicsAndSound fields if needed -->
+
+                        <!-- Connection Ports And Expansion Features -->
+                        <h5>Connection Ports And Expansion Features</h5>
+                        <input type="text" class="form-control"
+                            name="Specifications.connectionPortsAndExpansionFeatures.TheWebOfCommunication"
+                            placeholder="The Web Of Communication" value="Ethernet">
+                        <input type="text" class="form-control"
+                            name="Specifications.connectionPortsAndExpansionFeatures.WirelessConnectivity"
+                            placeholder="Wireless Connectivity" value="Wi-Fi 6">
+                        <input type="text" class="form-control"
+                            name="Specifications.connectionPortsAndExpansionFeatures.Webcams" placeholder="Webcams"
+                            value="720p HD">
+                        <input type="text" class="form-control"
+                            name="Specifications.connectionPortsAndExpansionFeatures.KeyboardLight"
+                            placeholder="Keyboard Light" value="RGB">
+                        <!-- Add more connectionPortsAndExpansionFeatures fields if needed -->
+
+                        <!-- Size Volume -->
+                        <h5>Size Volume</h5>
+                        <input type="text" class="form-control" name="Specifications.sizeVolume.Size" placeholder="Size"
+                            value="14.1 x 9.7 x 0.7 inches">
+                        <input type="text" class="form-control" name="Specifications.sizeVolume.volume"
+                            placeholder="Volume" value="4.1 liters">
+                        <input type="text" class="form-control" name="Specifications.sizeVolume.Material"
+                            placeholder="Material" value="Aluminum">
+                        <!-- Add more sizeVolume fields if needed -->
+
+                        <!-- Other Information -->
+                        <h5>Other Information</h5>
+                        <input type="text" class="form-control"
+                            name="Specifications.otherInformation.BatteryInformation" placeholder="Battery Information"
+                            value="4-cell Lithium-ion">
+                        <input type="text" class="form-control" name="Specifications.otherInformation.ChargerCapacity"
+                            placeholder="Charger Capacity" value="65W">
+                        <input type="text" class="form-control" name="Specifications.otherInformation.OperatingSystem"
+                            placeholder="Operating System" value="Windows 10">
+                        <input type="text" class="form-control" name="Specifications.otherInformation.LaunchTime"
+                            placeholder="Launch Time" value="2023-05-15">
+                        <!-- Add more otherInformation fields if needed -->
+
+                    </div>
+
+
+                    <button type="submit" class="btn btn-primary" id="btn-submit">Submit</button>
+
+
+                </form>
+
+            </div>
+
+
+
+
+            <!--<form id="uploadForm" action="http://localhost:3000/product/create" method="post"
+                enctype="multipart/form-data">
+                <input type="file" name="img[0][color][0]" id="fileInput" multiple />
+                <input type="file" name="img[1][color][0]" id="fileInput" multiple />
+                <button type="submit">Submit</button>
+            </form>-->
+
+        </div><!-- End .page-wrapper -->
+
+
+        <script>
+            // Hàm thêm input cho trường dữ liệu colors
+            function addColorInput() {
+                const colorsInputs = document.getElementById('colorsInputs');
+                const newIndex = colorsInputs.children.length;
+                const newColorInput = document.createElement('div');
+                newColorInput.classList.add('colorInput', 'mb-2');
+                newColorInput.innerHTML = `
+        				                <input type="text" class="form-control" name="colors[${newIndex}][color]" placeholder="Color">
+        				                <input type="number" class="form-control" name="colors[${newIndex}][price]" placeholder="Price">
+        				            `;
+                colorsInputs.appendChild(newColorInput);
+            }
+
+            // Hàm thêm input cho trường dữ liệu img
+            function addImgInput() {
+                const imagesInputs = document.getElementById('imagesInputs');
+                const newIndex = imagesInputs.children.length;
+                const newImgInput = document.createElement('div');
+                newImgInput.classList.add('imgInput', 'mb-2');
+                newImgInput.innerHTML = `
+        				                <input type="text" class="form-control" name="img[${newIndex}][color]" placeholder="Color">
+        				              <input type="file" class="form-control-file" name="img[${newIndex}][path]" accept="image/*" multiple>
+        				            `;
+                imagesInputs.appendChild(newImgInput);
+            }
+        </script>
+
+
+
+        <button id="scroll-top" title="Back to Top"><i class="icon-arrow-up"></i></button>
+
+
+
+        <script>
+            // Hàm thêm input cho trường dữ liệu colors
+            function addColorInput() {
+                const colorsInputs = document.getElementById('colorsInputs');
+                const newIndex = colorsInputs.children.length;
+                const newColorInput = document.createElement('div');
+                newColorInput.classList.add('colorInput', 'mb-2');
+                newColorInput.innerHTML = `
+        				                <input type="text" class="form-control" name="colors[${newIndex}][color]" placeholder="Color">
+        				                <input type="number" class="form-control" name="colors[${newIndex}][price]" placeholder="Price">
+        				            `;
+                colorsInputs.appendChild(newColorInput);
+            }
+
+            // Hàm thêm input cho trường dữ liệu img
+            function addImgInput() {
+                const imagesInputs = document.getElementById('imagesInputs');
+                const newIndex = imagesInputs.children.length;
+                const newImgInput = document.createElement('div');
+                newImgInput.classList.add('imgInput', 'mb-2');
+                newImgInput.innerHTML = `
+        				                <input type="text" class="form-control" name="img[${newIndex}][color]" placeholder="Color">
+        				              <input type="file" class="form-control-file" name="img[${newIndex + 1}][color][0]" accept="image/*" multiple>
+        				            `;
+                imagesInputs.appendChild(newImgInput);
+            }
+        </script>
+
+
+
+
+        <!-- Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script type="module" src="./assets/js/FE/admin-create-product.FE.js"></script>
+    </body>
+
+
+    <!-- molla/dashboard.html  22 Nov 2019 10:03:13 GMT -->
+
+</html>

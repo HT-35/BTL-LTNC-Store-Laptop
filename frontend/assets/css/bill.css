@@ -1,0 +1,17 @@
+body {
+  background-color: #ffe8d2;
+}
+.card {
+  border: none;
+}
+
+.footer {
+  background-color: #eeeeeea8;
+}
+.footer span {
+  font-size: 15px;
+}
+.product-qty span {
+  font-size: 15px;
+  color: black;
+}

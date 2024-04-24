@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+    <!-- molla/dashboard.html  22 Nov 2019 10:03:13 GMT -->
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Molla - Bootstrap eCommerce Template</title>
+        <meta name="keywords" content="HTML5 Template">
+        <meta name="description" content="Molla - Bootstrap eCommerce Template">
+        <meta name="author" content="p-themes">
+        <!-- Favicon -->
+        <link rel="apple-touch-icon" sizes="180x180" href="assets/images/icons/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="assets/images/icons/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="assets/images/icons/favicon-16x16.png">
+        <link rel="manifest" href="assets/images/icons/site.html">
+        <link rel="mask-icon" href="assets/images/icons/safari-pinned-tab.svg" color="#666666">
+        <link rel="shortcut icon" href="assets/images/icons/favicon.ico">
+        <meta name="apple-mobile-web-app-title" content="Molla">
+        <meta name="application-name" content="Molla">
+        <meta name="msapplication-TileColor" content="#cc9966">
+        <meta name="msapplication-config" content="assets/images/icons/browserconfig.xml">
+        <meta name="theme-color" content="#ffffff">
+
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+            integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+            integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+        <!-- Plugins CSS File -->
+        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+        <!-- Main CSS File -->
+        <link rel="stylesheet" href="assets/css/style.css">
+
+        <link rel="stylesheet" href="assets/css/daskboard.css">
+    </head>
+
+    <body>
+
+
+
+        <div class="page-wrapper">
+            <header class="header header-intro-clearance header-3">
+
+                <div class="header-middle">
+                    <div class="container">
+                        <div class="header-left">
+                            <a href="index.html" class="logo">
+                                <img src="assets/images/demos/demo-3/logo.png" alt="Molla Logo" width="115px">
+                            </a>
+                        </div><!-- End .header-left -->
+
+                        <div class="header-center">
+                            <div class="header-search header-search-extended header-search-visible d-none d-lg-block">
+                                <a href="#" class="search-toggle" role="button"><i class="icon-search"></i></a>
+                                <form action="#" method="get">
+                                    <div class="header-search-wrapper search-wrapper-wide">
+                                        <label for="q" class="sr-only">Search</label>
+                                        <button class="btn btn-primary" type="submit"><i
+                                                class="icon-search"></i></button>
+                                        <input type="search" class="form-control" name="q" id="q"
+                                            placeholder="Search product ..." required>
+                                    </div><!-- End .header-search-wrapper -->
+                                </form>
+                            </div><!-- End .header-search -->
+                        </div>
+
+                        <div class="header-right">
+
+
+                            <div class="dropdown compare-dropdown">
+                                <a href="./cart.html" class="dropdown-toggle" role="button">
+                                    <div class="icon">
+                                        <i class="icon-shopping-cart"></i>
+                                    </div>
+                                    <p style="color: #ffffff;">Card</p>
+                                </a>
+
+                            </div>
+
+                            <div id="insert-info" class="">
+                                <div class="dropdown compare-dropdown">
+                                    <a href="./login.html" class="dropdown-toggle" role="button">
+                                        <div class="icon">
+                                            <i class="fa-solid fa-right-to-bracket"></i>
+                                        </div>
+                                        <p style="color: #ffffff;">SIGN IN / SIGN UP</p>
+                                    </a>
+                                </div>
+
+                                <!--<div class="dropdown compare-dropdown">
+                                    <a href="./login.html" class="dropdown-toggle" role="button">
+                                        <div class="icon">
+
+                                            <i class="fa-regular fa-user"></i>
+                                        </div>
+                                        <p style="color: #ffffff;">Huy Trần</p>
+                                    </a>
+                                </div>-->
+
+
+                            </div>
+
+
+
+                        </div>
+                    </div><!-- End .container -->
+                </div><!-- End .header-middle -->
+
+                <div class="header-bottom sticky-header">
+                    <div class="container">
+
+
+
+
+
+                    </div><!-- End .container -->
+                </div><!-- End .header-bottom -->
+            </header><!-- End .header -->
+
+            <main class="main">
+                <div class="page-header text-center mb-3"
+                    style="background-image: url('assets/images/page-header-bg.jpg')">
+                    <div class="container">
+                        <h1 class="page-title">Tài Khoản</h1>
+                    </div>
+                </div>
+
+
+                <div class="page-content">
+                    <div class="dashboard">
+                        <div class="container">
+                            <div class="row">
+                                <aside class="col-md-4 col-lg-3">
+                                    <ul class="nav nav-dashboard flex-column mb-3 mb-md-0" id="select-option"
+                                        role="tablist">
+
+                                        <li class="nav-item active">
+                                            <a class="nav-link active" id="tab-account-link" data-toggle="tab"
+                                                href="#tab-account" role="tab" aria-controls="tab-account"
+                                                aria-selected="false">Tài Khoản</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="tab-orders-link" data-toggle="tab"
+                                                href="#tab-orders" role="tab" aria-controls="tab-orders"
+                                                aria-selected="false">Lịch Sử Mua Hàng</a>
+                                        </li>
+
+                                        <li class="nav-item" id="tab-address-link-select">
+                                            <a class="nav-link" id="tab-address-link" data-toggle="tab"
+                                                href="#tab-address" role="tab" aria-controls="tab-address"
+                                                aria-selected="false">Địa Chỉ Giao Hàng</a>
+                                        </li>
+
+                                        <li class="nav-item btn-signout">
+                                            <btn class="nav-link">Đăng Xuất</btn>
+                                        </li>
+                                    </ul>
+                                </aside><!-- End .col-lg-3 -->
+
+                                <div class="col-md-8 col-lg-9">
+                                    <div class="tab-content">
+
+
+
+
+                                        <div class="tab-pane fade" id="tab-address" role="tabpanel"
+                                            aria-labelledby="tab-address-link" data-toggle="tab"
+                                            data-parent="#tab-content">
+
+                                            <div class="row">
+                                                <div class="">
+                                                    <!-- Button trigger modal -->
+                                                    <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                        data-target="#exampleModal">
+                                                        Thêm Địa Chỉ Giao Hàng
+                                                    </button>
+
+                                                    <!-- Modal -->
+                                                    <!-- Khai báo modal -->
+                                                    <div class="modal fade" id="exampleModal" tabindex="-1"
+                                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">
+                                                                        Địa Chỉ Giao Hàng</h5>
+                                                                    <button type="button" class="close"
+                                                                        data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body p-3">
+                                                                    <form id="register-form">
+                                                                        <div class="form-group">
+                                                                            <label for="email-Rigister">Email</label>
+                                                                            <input type="email" class="form-control"
+                                                                                id="email-Rigister" name="email"
+                                                                                required>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="number-phone-Rigister">Số
+                                                                                Điện Thoại</label>
+                                                                            <input type="tel" class="form-control"
+                                                                                id="number-phone-Rigister"
+                                                                                name="numberphone" required>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                            <label for="register-address">Địa Chỉ
+                                                                                Giao Hàng</label>
+                                                                            <input type="text" class="form-control"
+                                                                                id="register-address" name="address"
+                                                                                required>
+                                                                            <p id="error-email" class="text-danger">
+                                                                            </p>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary"
+                                                                        data-dismiss="modal">Close</button>
+                                                                    <!-- Chú ý: data-dismiss="modal" đã được loại bỏ từ nút "Save changes" -->
+                                                                    <button type="button" class="btn btn-primary"
+                                                                        id="saveChangesBtn">Thêm Địa Chỉ Giao
+                                                                        Hàng</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row insert-address">
+                                                    <div class="col-lg-12">
+                                                        <div class="card card-dashboard ">
+                                                            <!--<div class="card-body">
+                                                                <h3 class="card-title">Địa Chỉ Giao Hàng 1</h3>
+                                                                <div class="row">
+                                                                    <div class="col-4 col-sm-4 col-md-4">Số Điện Thoại
+                                                                    </div>
+                                                                    <div class="col-8 col-sm-8 col-md-8">0345680700
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-4 col-sm-4 col-md-4">Địa Chỉ</div>
+                                                                    <div class="col-8 col-sm-8 col-md-8">
+                                                                        huyfa352002@gmail.com
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-4 col-sm-4 col-md-4">Địa Chỉ Email
+                                                                    </div>
+                                                                    <div class="col-8 col-sm-8 col-md-8">
+                                                                        Tạp hoá quỳnh trang, tổ 36, khu phố vườn dừa,
+                                                                        phường phước tân, biên hoà, đồng nai</div>
+                                                                </div>
+                                                                <a href="#">Edit <i class="icon-edit"></i></a>
+                                                            </div>-->
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+                                            </div><!-- End .row -->
+                                        </div><!-- .End .tab-pane -->
+
+
+                                        <div class="tab-pane fade show active " style="height: 550px;" id="tab-account"
+                                            role="tabpanel" aria-labelledby="tab-account-link">
+
+                                            <div>
+
+                                                <div class="row text-center">
+                                                    <div class="col-1 col-sm-1 col-md-1"></div>
+                                                    <div class="col-1 col-sm-1 col-md-1">
+
+                                                    </div>
+                                                    <div class="col-5 col-sm-5 col-md-5">
+                                                        <h3 class="text-center">Tài Khoản</h3>
+                                                    </div>
+                                                </div>
+                                                <div class="insert-data">
+                                                    <!--<div class="">
+                                                        <div class="row text-center">
+                                                            <div class="col-1 col-sm-1 col-md-1"></div>
+                                                            <div class="col-3 col-sm-3 col-md-3">
+                                                                Họ Tên :
+                                                            </div>
+                                                            <div class="col-8 col-sm-8 col-md-8 text-left">
+                                                                Trần Quang Huy
+                                                            </div>
+                                                        </div>
+                                                        <div class="row text-center">
+                                                            <div class="col-1 col-sm-1 col-md-1"></div>
+                                                            <div class="col-3 col-sm-3 col-md-3">
+                                                                Email :
+                                                            </div>
+                                                            <div class="col-8 col-sm-8 col-md-8 text-left">
+                                                                huyfa35200@gmail.com
+                                                            </div>
+                                                        </div>
+                                                        <div class="row text-center">
+                                                            <div class="col-0 col-sm-0 col-md-1"></div>
+                                                            <div class="col-4 col-sm-4 col-md-3">
+                                                                Số Điện Thoại :
+                                                            </div>
+                                                            <div class="col-8 col-sm-8 col-md-8 text-left">
+                                                                0343128733
+                                                            </div>
+                                                        </div>
+                                                    </div>-->
+                                                </div>
+                                            </div>
+
+                                        </div><!-- .End .tab-pane -->
+
+
+
+
+
+
+                                        <div class="tab-pane fade p-3" id="tab-orders" role="tabpanel"
+                                            aria-labelledby="tab-address-link" data-toggle="tab"
+                                            data-parent="#tab-content">
+
+                                            <div class="row">
+                                                <div class="row text-center p-2 " style="margin-bottom: 30px;">
+                                                    <h1>Lịch Sử Mua Hàng</h1>
+                                                    <div class="" style="height:800px">
+                                                        <div>
+                                                            <div class=" ">
+                                                                <div class="">
+                                                                    <div class="row   ">
+                                                                        <div
+                                                                            class="p-0 col-2 col-sm-2 col-md-2 col-lg-2 d-flex justify-content-center justify-items-center border-right  border-left border-top border-bottom">
+                                                                            <span class="font-weight-bold ">Hình
+                                                                                Ảnh</span>
+                                                                        </div>
+                                                                        <div
+                                                                            class="col-4 col-sm-4 col-md-4 col-lg-4 border-right text-left  border-top border-bottom">
+                                                                            <span
+                                                                                class="font-weight-bold text-center">Sản
+                                                                                Phẩm</span>
+                                                                        </div>
+                                                                        <div
+                                                                            class="col-2 col-sm-2 col-md-2 col-lg-2 border-right text-left text-center  border-top border-bottom">
+                                                                            <span class="font-weight-bold">Màu
+                                                                                Sắc</span>
+                                                                        </div>
+                                                                        <div
+                                                                            class="col-2 col-sm-2 col-md-2 col-lg-2 border-right text-left text-center  border-top border-bottom">
+                                                                            <span class="font-weight-bold">Số
+                                                                                Lượng</span>
+                                                                        </div>
+                                                                        <div
+                                                                            class="col-2 col-sm-2 col-md-2 col-lg-2 border-right p-0 border-top border-bottom">
+                                                                            <div class="text-right text-center ">
+                                                                                <span
+                                                                                    class="font-weight-bold text-center">Giá</span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <!-- inssert-product -->
+                                                                <div class="" id="insert-product">
+                                                                    <div class="row   border-bottom">
+                                                                        <div
+                                                                            class="col-2 col-sm-2 col-md-2 col-lg-2 d-flex justify-content-center justify-items-center border-right  border-left">
+
+                                                                            <img class="w-50"
+                                                                                src="https://cdn.tgdd.vn/Products/Images/44/231244/grey-1-org.jpg">
+
+                                                                        </div>
+                                                                        <div
+                                                                            class="col-4 col-sm-4 col-md-4 col-lg-4 text-left  border-right">
+                                                                            <p class="font-weight-bold">MacBook Air 15
+                                                                                inch
+                                                                                M3
+                                                                            </p>
+
+                                                                        </div>
+                                                                        <div
+                                                                            class="col-2 col-sm-2 col-md-2 col-lg-2 border-right">
+                                                                            <div class="text-center">
+                                                                                <p class="font-weight-bold ">
+                                                                                    Gray</p>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div
+                                                                            class="col-2 col-sm-2 col-md-2 col-lg-2 border-right">
+                                                                            <div class="text-center">
+                                                                                <p class="font-weight-bold ">
+                                                                                    1</p>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div
+                                                                            class="col-2 col-sm-2 col-md-2 col-lg-2 border-right p-0">
+                                                                            <div class="text-center">
+                                                                                <p class="font-weight-bold ">
+                                                                                    31.000.000đ</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div><!-- .End .tab-pane -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </main>
+
+
+        </div><!-- End .page-wrapper -->
+        <button id="scroll-top" title="Back to Top"><i class="icon-arrow-up"></i></button>
+
+
+
+        <!--   đóng modal khi save -->
+        <!-- Script JavaScript -->
+        <!--<script>
+            // Lấy thẻ nút "Save changes"
+            var saveChangesBtn = document.getElementById('saveChangesBtn');
+
+            // Gán sự kiện click cho nút "Save changes"
+            saveChangesBtn.addEventListener('click', function () {
+                // Lấy giá trị từ các trường nhập
+                var emailInput = document.getElementById('email-Rigister');
+                var numberPhoneInput = document.getElementById('number-phone-Rigister');
+                var addressInput = document.getElementById('register-address');
+
+                // Kiểm tra xem các trường có được nhập đủ không
+                var emailValue = emailInput.value;
+                var numberPhoneValue = numberPhoneInput.value;
+                var addressValue = addressInput.value;
+
+                if (!emailValue || !numberPhoneValue || !addressValue) {
+                    alert("Vui lòng nhập đầy đủ thông tin!");
+                    return; // Dừng việc thực hiện hàm tiếp theo nếu có trường không được nhập đủ
+                }
+
+                // Kiểm tra định dạng email
+                var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(emailValue)) {
+                    alert("Email không hợp lệ!");
+                    return; // Dừng việc thực hiện hàm tiếp theo nếu email không hợp lệ
+                }
+
+                // Kiểm tra định dạng số điện thoại (ví dụ: 10 chữ số)
+                var phoneRegex = /^\d{10}$/;
+                if (!phoneRegex.test(numberPhoneValue)) {
+                    alert("Số điện thoại không hợp lệ!");
+                    return; // Dừng việc thực hiện hàm tiếp theo nếu số điện thoại không hợp lệ
+                }
+
+                if (addressValue.length > 2 || numberPhoneValue.length > 2 || emailValue.length > 2) {
+
+                    saveChangesBtn.setAttribute('data-dismiss', "modal")
+                    // Xóa thông tin đã nhập
+                    emailInput.value = '';
+                    numberPhoneInput.value = '';
+                    addressInput.value = '';
+                    console.log(emailInput, numberPhoneInput, addressInput);
+                    setTimeout(() => {
+                        saveChangesBtn.removeAttribute('data-dismiss')
+
+                    }, 200);
+                }
+
+
+
+
+            });
+        </script>-->
+
+
+
+
+
+
+
+
+
+
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+            crossorigin="anonymous"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+            integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"
+            integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+"
+            crossorigin="anonymous"></script>
+
+
+        <!-- Plugins JS File -->
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/js/jquery.hoverIntent.min.js"></script>
+        <script src="assets/js/jquery.waypoints.min.js"></script>
+        <script src="assets/js/superfish.min.js"></script>
+        <script src="assets/js/owl.carousel.min.js"></script>
+        <!-- Main JS File -->
+        <script src="assets/js/main.js"></script>
+
+        <!-- JS -->
+        <script type="module" src="./assets/js/FE/dashboard.FE.js"></script>
+    </body>
+
+
+    <!-- molla/dashboard.html  22 Nov 2019 10:03:13 GMT -->
+
+</html>

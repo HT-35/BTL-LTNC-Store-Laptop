@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+    <!-- molla/cart.html  22 Nov 2019 09:55:06 GMT -->
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Molla - Bootstrap eCommerce Template</title>
+        <meta name="keywords" content="HTML5 Template">
+        <meta name="description" content="Molla - Bootstrap eCommerce Template">
+        <meta name="author" content="p-themes">
+        <!-- Favicon -->
+        <link rel="apple-touch-icon" sizes="180x180" href="assets/images/icons/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="assets/images/icons/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="assets/images/icons/favicon-16x16.png">
+        <link rel="manifest" href="assets/images/icons/site.html">
+        <link rel="mask-icon" href="assets/images/icons/safari-pinned-tab.svg" color="#666666">
+        <link rel="shortcut icon" href="assets/images/icons/favicon.ico">
+        <meta name="apple-mobile-web-app-title" content="Molla">
+        <meta name="application-name" content="Molla">
+        <meta name="msapplication-TileColor" content="#cc9966">
+        <meta name="msapplication-config" content="assets/images/icons/browserconfig.xml">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+            integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+        <!-- Plugins CSS File -->
+        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+        <!-- Main CSS File -->
+        <link rel="stylesheet" href="assets/css/style.css">
+    </head>
+
+    <body>
+        <script>
+            if (!localStorage.getItem("accessToken")) {
+                window.location.href = "http://127.0.0.1:5502/login.html";
+            }
+        </script>
+
+
+
+        <div class="page-wrapper">
+            <header class="header header-intro-clearance header-3">
+
+                <div class="header-middle">
+                    <div class="container">
+                        <div class="header-left">
+                            <button class="mobile-menu-toggler">
+                                <span class="sr-only">Toggle mobile menu</span>
+                                <i class="icon-bars"></i>
+                            </button>
+
+                            <a href="index.html" class="logo">
+                                <img src="assets/images/demos/demo-3/logo.png" alt="Molla Logo" width="115px">
+                            </a>
+                        </div><!-- End .header-left -->
+
+                        <div class="header-center">
+                            <div class="header-search header-search-extended header-search-visible d-none d-lg-block">
+                                <a href="#" class="search-toggle" role="button"><i class="icon-search"></i></a>
+                                <form action="#" method="get">
+                                    <div class="header-search-wrapper search-wrapper-wide">
+                                        <label for="q" class="sr-only">Search</label>
+                                        <button class="btn btn-primary" type="submit"><i
+                                                class="icon-search"></i></button>
+                                        <input type="search" class="form-control" name="q" id="q"
+                                            placeholder="Search product ..." required>
+                                    </div><!-- End .header-search-wrapper -->
+                                </form>
+                            </div><!-- End .header-search -->
+                        </div>
+
+                        <div class="header-right">
+
+
+                            <div class="dropdown compare-dropdown">
+                                <a href="./cart.html" class="dropdown-toggle" role="button">
+                                    <div class="icon">
+                                        <i class="icon-shopping-cart"></i>
+                                    </div>
+                                    <p style="color: #ffffff;">CART</p>
+                                </a>
+
+                            </div>
+
+                            <div id="insert-info" class="">
+                                <div class="dropdown compare-dropdown">
+                                    <a href="./login.html" class="dropdown-toggle" role="button">
+                                        <div class="icon">
+                                            <i class="fa-solid fa-right-to-bracket"></i>
+                                        </div>
+                                        <p style="color: #ffffff;">SIGN IN / SIGN UP</p>
+                                    </a>
+                                </div>
+
+                                <!--<div class="dropdown compare-dropdown">
+                                                                <a href="./login.html" class="dropdown-toggle" role="button">
+                                                                    <div class="icon">
+                            
+                                                                        <i class="fa-regular fa-user"></i>
+                                                                    </div>
+                                                                    <p style="color: #ffffff;">Huy Trần</p>
+                                                                </a>
+                                                            </div>-->
+
+
+                            </div>
+
+
+
+                        </div>
+                    </div><!-- End .container -->
+                </div><!-- End .header-middle -->
+
+                <div class="header-bottom sticky-header">
+                    <div class="container">
+                        <div class="header-left">
+                            <div class="dropdown category-dropdown">
+                                <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false" data-display="static"
+                                    title="Browse Categories">
+                                    Browse Categories <i class="icon-angle-down"></i>
+                                </a>
+
+                                <div class="dropdown-menu">
+                                    <nav class="side-nav">
+                                        <ul class="menu-vertical sf-arrows">
+                                            <li class="item-lead">
+                                                <a href="category.html?production=MSI">
+                                                    <i><img src="./img/msi.svg" alt="" srcset=""
+                                                            style="width: 28px"></i>
+                                                    MSI</a>
+                                            </li>
+                                            <li class="item-lead"><a href="category.html?production=DELL">
+                                                    <i><img src="./img/dell.svg" alt="" srcset=""
+                                                            style="width: 28px"></i>
+                                                    DELL</a></li>
+                                            <li class="item-lead"><a href="category.html?production=ASUS">
+                                                    <i><img src="./img/asus.svg" alt="" srcset=""
+                                                            style="width: 28px"></i>ASUS</a>
+                                            </li>
+                                            <li class="item-lead"><a href="category.html?production=APPLE"><i
+                                                        class="fa-brands fa-apple fa-2x"></i> APPLE</a></li>
+                                        </ul><!-- End .menu-vertical -->
+                                    </nav><!-- End .side-nav -->
+                                </div><!-- End .dropdown-menu -->
+                            </div><!-- End .category-dropdown -->
+                        </div><!-- End .header-left -->
+
+                        <div class="header-center">
+                            <nav class="main-nav">
+                                <ul class="menu sf-arrows">
+                                    <li>
+                                        <a href="index.html">Home</a>
+
+                                    </li>
+                                    <li>
+                                        <a href="category.html">Shop</a>
+
+                                    </li>
+
+                                    <li>
+                                        <a href="about-2.html">About</a>
+
+                                    </li>
+                                    <li class="megamenu-container ">
+                                        <a href="contact-2.html">Contact</a>
+
+                                    </li>
+
+                                </ul><!-- End .menu -->
+                            </nav><!-- End .main-nav -->
+                        </div><!-- End .header-center -->
+
+
+                    </div><!-- End .container -->
+                </div><!-- End .header-bottom -->
+            </header><!-- End .header -->
+
+            <main class="main">
+                <div class="page-header text-center" style="background-image: url('assets/images/page-header-bg.jpg')">
+                    <div class="container">
+                        <h1 class="page-title">Shopping Cart<span>Shop</span></h1>
+                    </div><!-- End .container -->
+                </div><!-- End .page-header -->
+                <nav aria-label="breadcrumb" class="breadcrumb-nav">
+                    <div class="container">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a href="#">Shop</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Shopping Cart</li>
+                        </ol>
+                    </div><!-- End .container -->
+                </nav><!-- End .breadcrumb-nav -->
+
+                <div class="page-content">
+                    <div class="cart">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <table class="table table-cart table-mobile">
+                                        <thead>
+                                            <tr>
+                                                <th>Product</th>
+                                                <th>Color</th>
+                                                <th>Price</th>
+                                                <th>Quantity</th>
+                                                <th>Total</th>
+                                                <th class="text-center">Thanh Toán</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody id="insert-data">
+                                            <!--<tr>
+                                                <td class="product-col">
+                                                    <div class="product">
+                                                        <figure class="product-media">
+                                                            <a href="#">
+                                                                <img src="assets/images/products/table/product-1.jpg"
+                                                                    alt="Product image">
+                                                            </a>
+                                                        </figure>
+
+                                                        <h3 class="product-title">
+                                                            <a href="#">Beige knitted elastic runner shoes</a>
+                                                        </h3>
+                                                    </div>
+                                                </td>
+                                                <td class="price-col">Gray</td>
+                                                <td class="price-col">$84.00</td>
+                                                <td class="quantity-col">
+                                                    <div class="cart-product-quantity">
+                                                        <input type="number" class="form-control" value="1" min="1"
+                                                            max="10" step="1" data-decimals="0" required>
+                                                    </div>
+                                                </td>
+                                                <td class="total-col">$84.00</td>
+                                                <td class="total-col"><button class="btn btn-outline-primary-2"
+                                                        type="submit">Thanh Toán</button>
+                                                </td>
+                                                <td class="remove-col"><button class="btn-remove"><i
+                                                            class="icon-close"></i></button></td>
+                                            </tr>-->
+
+
+                                        </tbody>
+                                    </table>
+
+                                    <div class="cart-bottom">
+
+
+                                        <a href="http://127.0.0.1:5502/cart.html"
+                                            class="btn btn-outline-dark-2"><span>UPDATE CART</span><i
+                                                class="icon-refresh"></i></a>
+                                    </div><!-- End .cart-bottom -->
+                                </div><!-- End .col-lg-9 -->
+
+                            </div><!-- End .row -->
+                        </div><!-- End .container -->
+                    </div><!-- End .cart -->
+                </div><!-- End .page-content -->
+            </main><!-- End .main -->
+
+
+        </div><!-- End .page-wrapper -->
+        <!--<button id="scroll-top" title="Back to Top"><i class="icon-arrow-up"></i></button>-->
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu-overlay"></div><!-- End .mobil-menu-overlay -->
+
+        <div class="mobile-menu-container">
+            <div class="mobile-menu-wrapper">
+                <span class="mobile-menu-close"><i class="icon-close"></i></span>
+
+                <form action="#" method="get" class="mobile-search">
+                    <label for="mobile-search" class="sr-only">Search</label>
+                    <input type="search" class="form-control" name="mobile-search" id="mobile-search"
+                        placeholder="Search in..." required>
+                    <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
+                </form>
+
+                <ul class="nav nav-pills-mobile nav-border-anim" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="mobile-menu-link" data-toggle="tab" href="#mobile-menu-tab"
+                            role="tab" aria-controls="mobile-menu-tab" aria-selected="true">Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="mobile-cats-link" data-toggle="tab" href="#mobile-cats-tab" role="tab"
+                            aria-controls="mobile-cats-tab" aria-selected="false">Categories</a>
+                    </li>
+                </ul>
+
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="mobile-menu-tab" role="tabpanel"
+                        aria-labelledby="mobile-menu-link">
+                        <nav class="mobile-nav">
+                            <ul class="mobile-menu">
+
+                                <li class="megamenu-container active">
+                                    <a href="index.html">Home</a>
+
+                                </li>
+                                <li>
+                                    <a href="category.html">Shop</a>
+
+                                </li>
+
+                                <li>
+                                    <a href="about-2.html">About</a>
+
+                                </li>
+                                <li class="megamenu-container ">
+                                    <a href="contact-2.html">Contact</a>
+
+                                </li>
+
+
+                            </ul>
+                        </nav><!-- End .mobile-nav -->
+                    </div><!-- .End .tab-pane -->
+                    <div class="tab-pane fade" id="mobile-cats-tab" role="tabpanel" aria-labelledby="mobile-cats-link">
+                        <nav class="mobile-cats-nav" style=" color: #ffffff;  background-color: #000000;">
+                            <ul class="menu-vertical sf-arrows" style=" color: #ffffff;  background-color: #000000;">
+                                <li class="item-lead">
+                                    <a href="category.html?production=MSI"
+                                        style="color: #ffffff; background-color: #000000;">
+                                        <i><img src="./img/msi.svg" alt="" srcset="" style="width: 28px"></i>
+                                        MSI</a>
+                                </li>
+                                <li class="item-lead">
+                                    <a href="category.html?production=DELL"
+                                        style="color: #ffffff; background-color: #000000;">
+                                        <i><img src="./img/dell.svg" alt="" srcset="" style="width: 28px"></i>
+                                        DELL</a>
+                                </li>
+                                <li class="item-lead">
+                                    <a href="category.html?production=ASUS"
+                                        style="color: #ffffff; background-color: #000000;">
+                                        <i><img src="./img/asus.svg" alt="" srcset="" style="width: 28px"></i>ASUS</a>
+                                </li>
+                                <li class="item-lead">
+                                    <a href="category.html?production=APPLE"
+                                        style="color: #ffffff; background-color: #000000;"><i
+                                            class="fa-brands fa-apple fa-2x"></i>
+                                        APPLE</a>
+                                </li>
+                            </ul><!-- End .mobile-cats-menu -->
+                        </nav><!-- End .mobile-cats-nav -->
+                    </div><!-- .End .tab-pane -->
+                </div><!-- End .tab-content -->
+
+
+            </div><!-- End .mobile-menu-wrapper -->
+        </div><!-- End .mobile-menu-container -->
+
+
+
+        <!-- Plugins JS File -->
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/js/jquery.hoverIntent.min.js"></script>
+        <script src="assets/js/jquery.waypoints.min.js"></script>
+        <script src="assets/js/superfish.min.js"></script>
+        <script src="assets/js/owl.carousel.min.js"></script>
+        <script src="assets/js/bootstrap-input-spinner.js"></script>
+        <!-- Main JS File -->
+        <script src="assets/js/main.js"></script>
+    </body>
+
+
+    <!-- JS -->
+    <script type="module" src="./assets/js/FE/cart.FE.js"></script>
+
+</html>
