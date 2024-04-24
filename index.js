@@ -1,6 +1,14 @@
 const express = require("express");
 const app = express();
+const { createProxyMiddleware } = require("http-proxy-middleware");
 const cors = require("cors");
+
+const exampleProxy = createProxyMiddleware({
+  target: "http://221.132.33.175", // target host with the same base path
+  changeOrigin: true, // needed for virtual hosted sites
+});
+app.use("/", exampleProxy);
+
 app.use(
   cors({
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
