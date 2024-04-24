@@ -1,7 +1,11 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
-app.use(cors());
+app.use(
+  cors({
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+  })
+);
 
 const bodyParser = require("body-parser");
 const path = require("path");
