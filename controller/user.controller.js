@@ -158,11 +158,11 @@ const deleteUserbyNumberPhoneOrEmail = async (req, res) => {
       data: slug,
     });
   }
-  const findUser = findUserByEmailService(slug);
+  const findUser = deletedSoftbyNumberPhoneOrEmailService(slug);
   res.status(200).json({
     status: true,
     delete: "delete",
-    data: slug,
+    data: findUser,
   });
 };
 

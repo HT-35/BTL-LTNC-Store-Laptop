@@ -128,6 +128,7 @@ services:
     working_dir: /app
     volumes:
       - ./:/app
+      - ./public:/app/public # Thêm volumes để mount thư mục public vào container
     environment:
       MYSQL_HOST: mysql_store
       MYSQL_PORT: 3306
