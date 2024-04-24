@@ -4,6 +4,7 @@ const cors = require("cors");
 app.use(
   cors({
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+    origin: ["http://localhost:3000", "http://221.132.33.175"],
   })
 );
 
