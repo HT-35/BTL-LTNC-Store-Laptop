@@ -113,7 +113,7 @@ async function createUser(data) {
   console.log(res);
   if (res.status === true) {
     alert("Tạo Tài Khoản Thành Công !! ");
-    window.location.href = "http://221.132.33.175:3000/login.html";
+    window.location.href = "http://221.132.33.175/login.html";
   } else {
     const notifi = `${res.data.errors[0].path} đã tồn tại`;
     alert(notifi);
