@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   product.forEach((item, index) => {
     const { _id, color, img, nameLaptop, price, quantity } = item;
     const filterPathImg = img.filter((imgItem) => imgItem.color === color);
-    const pathImg = `http://221.132.33.175:3000/${filterPathImg[0].path[0]}`;
+    const pathImg = `http://221.132.33.175:3000${filterPathImg[0].path[0]}`;
     let total = Number(price) * Number(quantity);
 
     const templateProducr = `

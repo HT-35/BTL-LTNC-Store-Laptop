@@ -300,7 +300,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 class="col-2 col-sm-2 col-md-2 col-lg-2 d-flex justify-content-center justify-items-center border-right  border-left">
 
                 <img class="w-50"
-                    src="http://221.132.33.175:3000/${imgPath}">
+                    src="http://221.132.33.175:3000${imgPath}">
 
             </div>
             <div

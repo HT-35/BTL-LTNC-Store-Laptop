@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const filterPathImg = img.filter((item) => item.color === color);
     console.log("filterPathImg:", filterPathImg);
 
-    const pathImg = `http://221.132.33.175:3000/${filterPathImg[0].path[0]}`;
+    const pathImg = `http://221.132.33.175:3000${filterPathImg[0].path[0]}`;
 
     let total = 0;
     total = Number(price) * Number(quantity);

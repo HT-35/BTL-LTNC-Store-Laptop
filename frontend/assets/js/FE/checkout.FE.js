@@ -81,7 +81,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                           <div class="product">
                               <figure class="product-media">
                   
-                                      <img src="http://221.132.33.175:3000/${pathImg}"
+                                      <img src="http://221.132.33.175:3000${pathImg}"
                                           alt="Product image">
                       
                               </figure>
