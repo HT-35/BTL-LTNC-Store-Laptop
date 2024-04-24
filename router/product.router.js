@@ -39,22 +39,22 @@ const upload = multer({ storage: storage }).fields([
 
 //const upload = multer({ storage: storage }).array("images", 10); // Xử lý tối đa 10 tệp hình ảnh được gửi
 
-//    [http://221.132.33.175/product/create]
+//    [http://221.132.33.175:3000/product/create]
 productRouter.post("/create", upload, createProductController);
 
-//    http://221.132.33.175/product/update/:slug
+//    http://221.132.33.175:3000/product/update/:slug
 productRouter.put("/update/:slug", upload, UpdateDetailBySlugController);
 
-// http://221.132.33.175/product/:id
+// http://221.132.33.175:3000/product/:id
 productRouter.get("/:slug", getDetailBySlugController);
 
-//   http://221.132.33.175/product/
+//   http://221.132.33.175:3000/product/
 productRouter.get("/", getAllProductController);
 
-//   http://221.132.33.175/product/delete/:slug
+//   http://221.132.33.175:3000/product/delete/:slug
 productRouter.delete("/delete/:slug", DeleteProductController);
 
-//   http://221.132.33.175/product/delete/:slug
+//   http://221.132.33.175:3000/product/delete/:slug
 productRouter.delete("/delete/", DeleteProductController);
 
 module.exports = { productRouter };

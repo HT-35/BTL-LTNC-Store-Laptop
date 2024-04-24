@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     "#insert-product-featured"
   );
 
-  const product = await callAPIFunction("http://221.132.33.175/product/");
+  const product = await callAPIFunction("http://221.132.33.175:3000/product/");
 
   const ArrProduct = product.data;
   //  console.log(ArrProduct);
@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 <figure class="product-media">
                                     <span class="product-label label-new">Innovative</span>
                                     <a href="product.html?product=${slug}">
-                                        <img src="http://221.132.33.175/${Image}" alt="Product image"
+                                        <img src="http://221.132.33.175:3000/${Image}" alt="Product image"
                                             class="product-image">
                                     </a>
 
@@ -115,7 +115,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 <figure class="product-media">
                                     <span class="product-label label-new">Trendding</span>
                                     <a href="product.html?product=${slug}">
-                                        <img src="http://221.132.33.175/${Image}" alt="Product image"
+                                        <img src="http://221.132.33.175:3000/${Image}" alt="Product image"
                                             class="product-image">
                                     </a>
 
@@ -177,7 +177,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 <figure class="product-media">
                                     <span class="product-label label-new">Selling</span>
                                     <a href="product.html?product=${slug}">
-                                        <img src="http://221.132.33.175/${Image}" alt="Product image"
+                                        <img src="http://221.132.33.175:3000/${Image}" alt="Product image"
                                             class="product-image">
                                     </a>
 

@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const token = localStorage.getItem("accessToken");
 
-  const res = await fetchGetAllCard("http://221.132.33.175/cart", token);
+  const res = await fetchGetAllCard("http://221.132.33.175:3000/cart", token);
   if (res.status === false) {
     window.location.href = "/login.html";
   }
@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const filterPathImg = img.filter((item) => item.color === color);
     console.log("filterPathImg:", filterPathImg);
 
-    const pathImg = `http://221.132.33.175/${filterPathImg[0].path[0]}`;
+    const pathImg = `http://221.132.33.175:3000/${filterPathImg[0].path[0]}`;
 
     let total = 0;
     total = Number(price) * Number(quantity);
@@ -145,7 +145,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     };
     console.log("updateCart:  ", updateCart);
     const callApiUpdateQuantity = await changeQuantityProductInCard(
-      "http://221.132.33.175/cart/reduce-quantity",
+      "http://221.132.33.175:3000/cart/reduce-quantity",
       localStorage.getItem("accessToken"),
       updateCart
     );
@@ -179,7 +179,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       };
       console.log("Product:", product);
       const removeProduct = await callAPIMethodDelete(
-        "http://221.132.33.175/cart/remove-product",
+        "http://221.132.33.175:3000/cart/remove-product",
         localStorage.getItem("accessToken"),
         product
       );

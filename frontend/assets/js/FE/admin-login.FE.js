@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     async function login(data) {
       const postData = await fetchMethodPost(
-        "http://221.132.33.175/login/admin",
+        "http://221.132.33.175:3000/login/admin",
         data
       );
       const res = await postData;
@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const { token, fullName } = res;
         console.log({ token, fullName });
         showProfile(token, fullName);
-        window.location.href = "http://221.132.33.175/admin-dashboad.html";
+        window.location.href = "http://221.132.33.175:3000/admin-dashboad.html";
       } else {
         if ((res.data = "user does not have permission !!!")) {
           const template = `<span class="text-danger">Bạn Không Có Quyền Truy Cập !!!</span>`;
@@ -62,14 +62,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
 async function createUser(data) {
   const postData = await fetchMethodPost(
-    "http://221.132.33.175/user/create",
+    "http://221.132.33.175:3000/user/create",
     data
   );
   const res = await postData;
   console.log(res);
   if (res.status === true) {
     alert("Tạo Tài Khoản Thành Công !! ");
-    window.location.href = "http://221.132.33.175/login.html";
+    window.location.href = "http://221.132.33.175:3000/login.html";
   } else {
     const notifi = `${res.data.errors[0].path} đã tồn tại`;
     alert(notifi);
