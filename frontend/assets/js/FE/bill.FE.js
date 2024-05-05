@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 <div class="col-3 col-sm-3 col-md-3 col-lg-3 mx-auto">
 
                     <img
-                        src="http://221.132.33.175:3000/app/${pathImg}">
+                        src="http://221.132.33.175:3000${pathImg}">
                    
                 </div>
                 <div class="col-5 col-sm-5 col-md-5 col-lg-5">

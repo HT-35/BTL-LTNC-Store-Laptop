@@ -28,7 +28,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   ArrProduct.map((item) => {
     //console.log(item.nameLaptop);
     const { nameLaptop, img, slug, ram, storage, Specifications } = item;
-    const price = item.colors[0].price;
+    const NewPrice = item.colors[0].price;
+    const price = convertNumber(NewPrice);
+
     const Image = img[0].path[0];
 
     const screen = Specifications.screen.screen;
@@ -89,3 +91,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     // addProduct.innerHTML = div;
   });
 });
+
+function convertNumber(number) {
+  return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+}

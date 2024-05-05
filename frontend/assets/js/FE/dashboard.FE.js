@@ -284,6 +284,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     const { price_per_unit, slug_Product, color, quanlity } = item.Billitems[0];
     //console.log({ price_per_unit, slug_Product, color, quanlity });
 
+    const price = convertNumber(price_per_unit);
+
     const findProduct = await callApiMethodGet(
       `http://221.132.33.175:3000/product/${slug_Product}`,
       localStorage.getItem("accessToken")
@@ -327,7 +329,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 class="col-2 col-sm-2 col-md-2 col-lg-2 border-right p-0">
                 <div class="text-center">
                     <p class="font-weight-bold ">
-                        ${price_per_unit}đ</p>
+                        ${price}đ</p>
                 </div>
             </div>
         </div>
@@ -335,3 +337,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     insertProduct.insertAdjacentHTML("beforeend", templateProduct);
   });
 });
+
+function convertNumber(number) {
+  return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+}
