@@ -22,7 +22,7 @@ const multer = require("multer");
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "/public/image"); // Sử dụng đường dẫn tuyệt đối
+    cb(null, "/app/public/image"); // Sử dụng đường dẫn tuyệt đối
   },
   filename: function (req, file, cb) {
     req.originalname = Date.now() + "-" + file.originalname;
