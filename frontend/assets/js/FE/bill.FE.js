@@ -24,12 +24,12 @@ document.addEventListener("DOMContentLoaded", async () => {
   const url = new URL(window.location.href);
   const idBill = url.searchParams.get("bill");
   const getDetailBill = await callApiMethodGet(
-    `http://221.132.33.175:3000/bill/detail/${idBill}`,
+    `http://127.0.0.1:3000/bill/detail/${idBill}`,
     localStorage.getItem("accessToken")
   );
   const { id_address, total } = getDetailBill?.data;
   const getDetailAddress = await callApiMethodGet(
-    `http://221.132.33.175:3000/delivery-address/detail/${id_address}`,
+    `http://127.0.0.1:3000/delivery-address/detail/${id_address}`,
     localStorage.getItem("accessToken")
   );
   const { address, email_address, numberPhone } = getDetailAddress.data;
@@ -37,9 +37,12 @@ document.addEventListener("DOMContentLoaded", async () => {
   const { price_per_unit, quanlity, slug_Product, color } =
     getDetailBill?.data?.Billitems[0];
   const getDetailProduct = await callAPIFunction(
-    `http://221.132.33.175:3000/product/${slug_Product}`
+    `http://127.0.0.1:3000/product/${slug_Product}`
   );
   const { nameLaptop, img } = getDetailProduct.data;
+  console.log("img:", img);
+  const pathImg = img[0].path[0];
+  console.log("pathImg:", pathImg);
 
   const templateBill = `
     
@@ -92,8 +95,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                 <div class="col-3 col-sm-3 col-md-3 col-lg-3 mx-auto">
 
                     <img
-                        src="https://cdn.tgdd.vn/Products/Images/44/231244/grey-1-org.jpg">
-
+                        src="http://221.132.33.175:3000/app/${pathImg}">
+                   
                 </div>
                 <div class="col-5 col-sm-5 col-md-5 col-lg-5">
                     <p class="font-weight-bold">${nameLaptop}

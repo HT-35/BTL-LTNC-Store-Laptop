@@ -38,7 +38,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     console.log(item);
     //console.log(item.nameLaptop);
     const { nameLaptop, img, slug, ram, storage, Specifications } = item;
-    const price = item.colors[0].price;
+    const NewPrice = item.colors[0].price;
+    const price = convertNumber(NewPrice);
     const Image = img[0].path[0];
 
     const screen = Specifications.screen.screen;
@@ -100,7 +101,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     console.log(item);
     //console.log(item.nameLaptop);
     const { nameLaptop, img, slug, ram, storage, Specifications } = item;
-    const price = item.colors[0].price;
+    const NewPrice = item.colors[0].price;
+    const price = convertNumber(NewPrice);
     const Image = img[0].path[0];
 
     const screen = Specifications.screen.screen;
@@ -162,7 +164,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     console.log(item);
     //console.log(item.nameLaptop);
     const { nameLaptop, img, slug, ram, storage, Specifications } = item;
-    const price = item.colors[0].price;
+    const NewPrice = item.colors[0].price;
+    const price = convertNumber(NewPrice);
+    console.log("price:  ", price);
     const Image = img[0].path[0];
 
     const screen = Specifications.screen.screen;
@@ -190,7 +194,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                             class="text-left">${nameLaptop}</a></h3>
                                     <!-- End .product-title -->
                                     <div class="product-price justify-content-left ">
-                                        ${price}₫
+                                        ${price} ₫
                                     </div><!-- End .product-price -->
                                    
                                     <div class="text-left">
@@ -199,7 +203,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                                         <p>Rom: ${storage}</p>
                                         <p>CPU: ${cpuTechnology}</p>
                                         <p>Pin: ${Battery}</p>
-
                                     </div>
 
                                 </div><!-- End .product-body -->
@@ -210,3 +213,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     insertProductSelling.insertAdjacentHTML("beforeend", templateProduct);
   });
 });
+
+function convertNumber(number) {
+  return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+}
+
+//console.log("price:   ", convertNumber(1000000));
