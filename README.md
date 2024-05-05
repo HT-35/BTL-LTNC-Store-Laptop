@@ -1,17 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Product Form</title>
-		<!-- Bootstrap CSS -->
-		<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-	</head>
-
-	<body>
+<div align="center">
+			<img
+				src="https://capsule-render.vercel.app/api?color=6bb890FF&type=rounded&section=footer&fontColor=ffffffFF&height=152&animation=&fontSize=70&fontAlign=50&fontAlignY=50&rotate=0&stroke=10b981FF&strokeWidth=2&text=HUY+TRAN%0A&reversal=true"
+				alt="" />
+		</div>
+		<div align="center"><img src="https://api.iconify.design/skill-icons/gmail-light.svg" alt="skill-icons:gmail-light"
+				height="40" />
+			<img width="45" />
+			<img src="https://api.iconify.design/devicon/linkedin.svg" alt="devicon:linkedin" height="40" />
+			<img width="45" />
+			<img src="https://api.iconify.design/logos/facebook.svg" alt="logos:facebook" height="40" />
+			<img width="45" />
+			<img src="https://api.iconify.design/skill-icons/instagram.svg" alt="skill-icons:instagram" height="40" />
+			<img width="45" />
+			<img src="https://api.iconify.design/mdi/github.svg" alt="mdi:github" height="40" />
+		</div>
 		<h1 align="left">
-			Huy Tran Backend Developer
+
 		</h1>
 		<p align="left">
 			💻Tech Stack
@@ -29,6 +33,9 @@
 			<img width="45" />
 			<img src="https://api.iconify.design/simple-icons/express.svg" alt="simple-icons:express" height="54" />
 		</div>
+		<h1 align="left">
+
+		</h1>
 		<div align="left">
 			<img
 				src="https://readme-typing-svg.demolab.com?fontSize=20&repeat=true&multiline=false&duration=5000&color=%2336bcf7ff&background=%2300000000&pause=1000&width=400&height=50&font=Fira+Code&lines=%E2%9C%94+Front-end&vCenter=true&size=20"
@@ -44,6 +51,9 @@
 			<img width="45" />
 			<img src="https://api.iconify.design/devicon/react.svg" alt="devicon:react" height="55" />
 		</div>
+		<h1 align="left">
+
+		</h1>
 		<div align="left">
 			<img
 				src="https://readme-typing-svg.demolab.com?fontSize=20&repeat=true&multiline=true&duration=5000&color=%2336bcf7ff&background=%2300000000&pause=1000&width=400&height=50&font=Fira+Code&lines=%E2%9C%94+Database&vCenter=true&size=20"
@@ -57,6 +67,9 @@
 			<img src="https://api.iconify.design/devicon-plain/microsoftsqlserver-wordmark.svg"
 				alt="devicon-plain:microsoftsqlserver-wordmark" height="55" />
 		</div>
+		<h1 align="left">
+
+		</h1>
 		<div align="left">
 			<img
 				src="https://readme-typing-svg.demolab.com?fontSize=20&repeat=true&multiline=false&duration=5000&color=%2336bcf7ff&background=%2300000000&pause=1000&width=400&height=50&font=Fira+Code&lines=%E2%9C%94+DevOps&vCenter=true&size=20"
@@ -64,6 +77,9 @@
 		</div>
 		<div align="center"><img src="https://api.iconify.design/devicon/docker.svg" alt="devicon:docker" height="60" />
 		</div>
+		<h1 align="left">
+
+		</h1>
 		<div align="left">
 			<img
 				src="https://readme-typing-svg.demolab.com?fontSize=20&repeat=true&multiline=false&duration=5000&color=%2336bcf7ff&background=%2300000000&pause=1000&width=400&height=50&font=Fira+Code&lines=%E2%9C%94+IDE&vCenter=true&size=20"
@@ -93,6 +109,9 @@
 			<img width="40" />
 			<img src="https://api.iconify.design/logos/figma.svg" alt="logos:figma" height="55" />
 		</div>
+		<h1 align="center">
+
+		</h1>
 		<div align="center">
 			<img
 				src="https://github-readme-stats.vercel.app/api?username=HT-35&theme=tokyonight&hide_border=true&show_icons=true&hide_title=false&disable_animations=false&hide_rank=false&rank_icon=default&hide=&show=&locale=EN" />
@@ -103,13 +122,10 @@
 		</div>
 		<div align="center">
 			<img
-				src="https://leetcard.jacoblin.cool/ht-35?animation=true&border=1&ext=contest&font=&height=200&hide=&radius=4&theme=dark&width=500"
+				src="https://leetcard.jacoblin.cool/HT-35?animation=true&border=1&ext=heatmap&font=Baloo_2&height=200&hide=&radius=4&theme=nord&width=500"
 				alt="" />
 		</div>
 		<div align="center">
 			<img src="https://user-images.githubusercontent.com/40719899/205479251-ffba5354-583f-491b-a1ef-ce919083e2b1.gif"
 				width="500" />
 		</div>
-	</body>
-
-</html>
