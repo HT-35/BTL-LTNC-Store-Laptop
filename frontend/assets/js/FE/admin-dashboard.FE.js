@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   // ==========================  Get Detail Accout   =================================
   const user = await callApiMethodGet(
-    "https://huytranfullstack.id.vn/user/info-user",
+    "https://huytranfullstack.id.vn:3000/user/info-user",
     localStorage.getItem("accessToken")
   );
   const { email, fullName, numberPhone } = user.data;
@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const insertBill = document.querySelector("#insert-bill");
 
   const billList = await callApiMethodGet(
-    "https://huytranfullstack.id.vn/bill/get-all",
+    "https://huytranfullstack.id.vn:3000/bill/get-all",
     localStorage.getItem("accessToken")
   );
 
@@ -106,13 +106,13 @@ document.addEventListener("DOMContentLoaded", async () => {
     const { slug_Product, color, quanlity, createdAt } = item.Billitems[0];
 
     const address = await callApiMethodGet(
-      `https://huytranfullstack.id.vn/delivery-address/detail/${id_address}`,
+      `https://huytranfullstack.id.vn:3000/delivery-address/detail/${id_address}`,
       localStorage.getItem("accessToken")
     );
     const addressDetail = address.data.address;
 
     const product = await callApiMethodGet(
-      `https://huytranfullstack.id.vn/product/${slug_Product}`,
+      `https://huytranfullstack.id.vn:3000/product/${slug_Product}`,
       localStorage.getItem("accessToken")
     );
     const { nameLaptop, storage, ram } = product.data;

@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const addProduct = document.querySelector(".add-new-product-laptop");
 
   const product = await callAPIFunction(
-    "https://huytranfullstack.id.vn/product/"
+    "https://huytranfullstack.id.vn:3000/product/"
   );
 
   const ArrProduct = product.data;
@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                                 <figure class="product-media">
                                                    
                                                     <a href="product.html?product=${slug}">
-                                                        <img src="https://huytranfullstack.id.vn${Image}" alt="Product image"
+                                                        <img src="https://huytranfullstack.id.vn:3000${Image}" alt="Product image"
                                                             class="product-image">
                                                     </a>
 
