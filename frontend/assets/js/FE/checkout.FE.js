@@ -8,8 +8,7 @@ import {
 
 const addressInsert = document.querySelector(".address-insert");
 const token = localStorage.getItem("accessToken");
-const apiGetListAddress =
-  "https://huytranfullstack.id.vn:3000/delivery-address";
+const apiGetListAddress = "http://huytranfullstack.id.vn:3000/delivery-address";
 
 document.addEventListener("DOMContentLoaded", async () => {
   const insertInfo = document.querySelector("#insert-info");
@@ -39,7 +38,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   //console.log("color:", color);
 
   const res = await callAPIFunction(
-    `https://huytranfullstack.id.vn:3000/product/${slugProduct}`
+    `http://huytranfullstack.id.vn:3000/product/${slugProduct}`
   );
   //console.log(res);
 
@@ -60,7 +59,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const pathImg = imgfilter[0].path[0];
   // === === === === === === Query Cart Get Quantity
   const getProductDetailInCard = await callApiMethodGet(
-    `https://huytranfullstack.id.vn:3000/cart/detail?id_product=${_id}&color=${color}`,
+    `http://huytranfullstack.id.vn:3000/cart/detail?id_product=${_id}&color=${color}`,
     localStorage.getItem("accessToken")
   );
 
@@ -82,7 +81,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                           <div class="product">
                               <figure class="product-media">
                   
-                                      <img src="https://huytranfullstack.id.vn:3000${pathImg}"
+                                      <img src="http://huytranfullstack.id.vn:3000${pathImg}"
                                           alt="Product image">
                       
                               </figure>
@@ -250,7 +249,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     //console.log(token);
 
     const createAddress = await callAPIMethodPost(
-      "https://huytranfullstack.id.vn:3000/delivery-address",
+      "http://huytranfullstack.id.vn:3000/delivery-address",
       localStorage.getItem("accessToken"),
       address
     );
@@ -358,7 +357,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       color: [color],
     };
     const createBill = await callAPIMethodPost(
-      "https://huytranfullstack.id.vn:3000/bill",
+      "http://huytranfullstack.id.vn:3000/bill",
       localStorage.getItem("accessToken"),
       bill
     );
@@ -370,7 +369,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     };
     console.log(product);
     const removeProduct = await callAPIMethodDelete(
-      "https://huytranfullstack.id.vn:3000/cart/remove-product",
+      "http://huytranfullstack.id.vn:3000/cart/remove-product",
       localStorage.getItem("accessToken"),
       product
     );

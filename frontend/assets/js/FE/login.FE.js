@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     async function login(data) {
       const postData = await fetchMethodPost(
-        "https://huytranfullstack.id.vn:3000/login",
+        "http://huytranfullstack.id.vn:3000/login",
         data
       );
       const res = await postData;
@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 async function createUser(data) {
   const postData = await fetchMethodPost(
-    "https://huytranfullstack.id.vn:3000/user/create",
+    "http://huytranfullstack.id.vn:3000/user/create",
     data
   );
   const res = await postData;

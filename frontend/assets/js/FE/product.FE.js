@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   //console.log("document.addEventListener ~ uriColor:", uriColor);
 
   const data = await callAPIFunction(
-    `https://huytranfullstack.id.vn:3000/product/${uriProduct}`
+    `http://huytranfullstack.id.vn:3000/product/${uriProduct}`
   );
   const product = await data.data;
 
@@ -68,19 +68,19 @@ document.addEventListener("DOMContentLoaded", async () => {
   const productZoomGallery = document.getElementById("product-zoom-gallery");
 
   //  // Cập nhật hình ảnh chính
-  productZoom.src = `https://huytranfullstack.id.vn:3000${Image[0]}`;
-  productZoom.dataset.zoomImage = `https://huytranfullstack.id.vn:3000${Image[0]}`;
+  productZoom.src = `http://huytranfullstack.id.vn:3000${Image[0]}`;
+  productZoom.dataset.zoomImage = `http://huytranfullstack.id.vn:3000${Image[0]}`;
 
   productZoomGallery.innerHTML = "";
   Image.forEach((path, index) => {
     const galleryItem = document.createElement("a");
     galleryItem.classList.add("product-gallery-item", "img-item");
     galleryItem.href = "javascript:void(0)";
-    galleryItem.dataset.image = `https://huytranfullstack.id.vn:3000${path}`;
-    galleryItem.dataset.zoomImage = `https://huytranfullstack.id.vn:3000${path}`;
+    galleryItem.dataset.image = `http://huytranfullstack.id.vn:3000${path}`;
+    galleryItem.dataset.zoomImage = `http://huytranfullstack.id.vn:3000${path}`;
 
     const img = document.createElement("img");
-    img.src = `https://huytranfullstack.id.vn:3000${path}`;
+    img.src = `http://huytranfullstack.id.vn:3000${path}`;
     img.alt = "product image";
 
     galleryItem.appendChild(img);
@@ -91,8 +91,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       //console.log("Clicked!"); // Kiểm tra xem sự kiện click được kích hoạt hay không
       //console.log(`Path: ${path}`); // Kiểm tra xem đường dẫn hình ảnh được truyền đúng hay không
 
-      productZoom.src = `https://huytranfullstack.id.vn:3000${path}`;
-      productZoom.dataset.zoomImage = `https://huytranfullstack.id.vn:3000${path}`;
+      productZoom.src = `http://huytranfullstack.id.vn:3000${path}`;
+      productZoom.dataset.zoomImage = `http://huytranfullstack.id.vn:3000${path}`;
 
       // Xóa lớp active khỏi tất cả các thẻ a trong gallery
       galleryItems.forEach((item) => {
@@ -540,7 +540,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     e.preventDefault();
     console.log("btnAddCart");
     const addCartProduct = await fetchMethodPostAddCart(
-      "https://huytranfullstack.id.vn:3000/cart",
+      "http://huytranfullstack.id.vn:3000/cart",
       cart
     );
     if (!addCartProduct.status) {
