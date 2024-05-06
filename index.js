@@ -11,6 +11,7 @@ app.use(
       "http://221.132.33.175",
       "http://221.132.33.175:3000",
       "https://huytranfullstack.id.vn",
+      "https://huytranfullstack.id.vn:3000",
     ],
   })
 );
