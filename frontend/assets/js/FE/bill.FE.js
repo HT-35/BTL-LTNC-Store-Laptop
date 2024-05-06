@@ -24,12 +24,12 @@ document.addEventListener("DOMContentLoaded", async () => {
   const url = new URL(window.location.href);
   const idBill = url.searchParams.get("bill");
   const getDetailBill = await callApiMethodGet(
-    `http://221.132.33.175:3000/bill/detail/${idBill}`,
+    `https://huytranfullstack.id.vn/bill/detail/${idBill}`,
     localStorage.getItem("accessToken")
   );
   const { id_address, total } = getDetailBill?.data;
   const getDetailAddress = await callApiMethodGet(
-    `http://221.132.33.175:3000/delivery-address/detail/${id_address}`,
+    `https://huytranfullstack.id.vn/delivery-address/detail/${id_address}`,
     localStorage.getItem("accessToken")
   );
   const { address, email_address, numberPhone } = getDetailAddress.data;
@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const { price_per_unit, quanlity, slug_Product, color } =
     getDetailBill?.data?.Billitems[0];
   const getDetailProduct = await callAPIFunction(
-    `http://221.132.33.175:3000/product/${slug_Product}`
+    `https://huytranfullstack.id.vn/product/${slug_Product}`
   );
   const { nameLaptop, img } = getDetailProduct.data;
   console.log("img:", img);
@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 <div class="col-3 col-sm-3 col-md-3 col-lg-3 mx-auto">
 
                     <img
-                        src="http://221.132.33.175:3000${pathImg}">
+                        src="https://huytranfullstack.id.vn${pathImg}">
                    
                 </div>
                 <div class="col-5 col-sm-5 col-md-5 col-lg-5">

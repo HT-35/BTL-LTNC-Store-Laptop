@@ -10,6 +10,7 @@ app.use(
       "http://localhost:3000",
       "http://221.132.33.175",
       "http://221.132.33.175:3000",
+      "https://huytranfullstack.id.vn",
     ],
   })
 );

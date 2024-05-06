@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     async function login(data) {
       const postData = await fetchMethodPost(
-        "http://221.132.33.175:3000/login",
+        "https://huytranfullstack.id.vn/login",
         data
       );
       const res = await postData;
@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 async function createUser(data) {
   const postData = await fetchMethodPost(
-    "http://221.132.33.175:3000/user/create",
+    "https://huytranfullstack.id.vn/user/create",
     data
   );
   const res = await postData;
