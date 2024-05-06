@@ -376,7 +376,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     console.log(removeProduct);
     const idBill = createBill.data.id;
     console.log("idBill:", idBill);
-    window.location.href = `http://221.132.33.175/bill.html?bill=${idBill}`;
+    window.location.href = `http://huytranfullstack.id.vn/bill.html?bill=${idBill}`;
   });
 });
 

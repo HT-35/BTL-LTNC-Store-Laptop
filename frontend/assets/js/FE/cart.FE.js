@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     token
   );
   if (res.status === false) {
-    window.location.href = "http://221.132.33.175/login.html";
+    window.location.href = "http://huytranfullstack.id.vn/login.html";
   }
 
   const product = res.data;
