@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     async function login(data) {
       const postData = await fetchMethodPost(
-        "http://221.132.33.175:3000/login",
+        "http://huytranfullstack.id.vn:3000/login",
         data
       );
       const res = await postData;
@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const { token, fullName } = res;
         console.log({ token, fullName });
         showProfile(token, fullName);
-        window.location.href = "http://221.132.33.175/index.html";
+        window.location.href = "http://huytranfullstack.id.vn/index.html";
       } else {
         const template = `<span class="text-danger">Tài Khoản Hoặc Mật Khẩu Sai !!</span>`;
         notifi.insertAdjacentHTML("beforeend", template);
@@ -106,14 +106,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
 async function createUser(data) {
   const postData = await fetchMethodPost(
-    "http://221.132.33.175:3000/user/create",
+    "http://huytranfullstack.id.vn:3000/user/create",
     data
   );
   const res = await postData;
   console.log(res);
   if (res.status === true) {
     alert("Tạo Tài Khoản Thành Công !! ");
-    window.location.href = "http://221.132.33.175/login.html";
+    window.location.href = "http://huytranfullstack.id.vn/login.html";
   } else {
     const notifi = `${res.data.errors[0].path} đã tồn tại`;
     alert(notifi);

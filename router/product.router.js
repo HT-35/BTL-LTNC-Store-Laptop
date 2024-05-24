@@ -39,22 +39,22 @@ const upload = multer({ storage: storage }).fields([
 
 //const upload = multer({ storage: storage }).array("images", 10); // Xử lý tối đa 10 tệp hình ảnh được gửi
 
-//    [http://221.132.33.175:3000/product/create]
+//    [https://huytranfullstack.id.vn/product/create]
 productRouter.post("/create", upload, createProductController);
 
-//    http://221.132.33.175:3000/product/update/:slug
+//    https://huytranfullstack.id.vn/product/update/:slug
 productRouter.put("/update/:slug", upload, UpdateDetailBySlugController);
 
-// http://221.132.33.175:3000/product/:id
+// https://huytranfullstack.id.vn/product/:id
 productRouter.get("/:slug", getDetailBySlugController);
 
-//   http://221.132.33.175:3000/product/
+//   https://huytranfullstack.id.vn/product/
 productRouter.get("/", getAllProductController);
 
-//   http://221.132.33.175:3000/product/delete/:slug
+//   https://huytranfullstack.id.vn/product/delete/:slug
 productRouter.delete("/delete/:slug", DeleteProductController);
 
-//   http://221.132.33.175:3000/product/delete/:slug
+//   https://huytranfullstack.id.vn/product/delete/:slug
 productRouter.delete("/delete/", DeleteProductController);
 
 module.exports = { productRouter };

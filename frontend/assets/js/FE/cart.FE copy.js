@@ -26,9 +26,12 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   // ==================  End Check Authen ======================================
   const token = localStorage.getItem("accessToken");
-  const res = await fetchGetAllCard("http://221.132.33.175:3000/cart", token);
+  const res = await fetchGetAllCard(
+    "http://huytranfullstack.id.vn:3000/cart",
+    token
+  );
   if (res.status === false) {
-    window.location.href = "http://221.132.33.175/login.html";
+    window.location.href = "http://huytranfullstack.id.vn/login.html";
   }
 
   const product = res.data;
@@ -37,7 +40,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   product.forEach((item, index) => {
     const { _id, color, img, nameLaptop, price, quantity } = item;
     const filterPathImg = img.filter((imgItem) => imgItem.color === color);
-    const pathImg = `http://221.132.33.175:3000${filterPathImg[0].path[0]}`;
+    const pathImg = `http://huytranfullstack.id.vn:3000${filterPathImg[0].path[0]}`;
     let total = Number(price) * Number(quantity);
 
     const templateProducr = `

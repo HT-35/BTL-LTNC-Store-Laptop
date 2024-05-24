@@ -20,7 +20,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const addProduct = document.querySelector(".add-new-product-laptop");
 
-  const product = await callAPIFunction("http://221.132.33.175:3000/product/");
+  const product = await callAPIFunction(
+    "http://huytranfullstack.id.vn:3000/product/"
+  );
 
   const ArrProduct = product.data;
   //  console.log(ArrProduct);
@@ -46,7 +48,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                                                 <figure class="product-media">
                                                    
                                                     <a href="product.html?product=${slug}">
-                                                        <img src="http://221.132.33.175:3000${Image}" alt="Product image"
+                                                        <img src="http://huytranfullstack.id.vn:3000${Image}" alt="Product image"
                                                             class="product-image">
                                                     </a>
 

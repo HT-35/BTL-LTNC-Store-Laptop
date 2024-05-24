@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     insertInfo.insertAdjacentHTML("beforeend", templateUser);
   } else {
-    window.location.href = "http://221.132.33.175/login.html";
+    window.location.href = "http://huytranfullstack.id.vn/login.html";
   }
 
   //  === === === === === === === === === ===   Check URL    === === === === === === === === === ===
@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     //console.log(token);
 
     const createAddress = await callAPIMethodPost(
-      "http://221.132.33.175:3000/delivery-address",
+      "http://huytranfullstack.id.vn:3000/delivery-address",
       localStorage.getItem("accessToken"),
       address
     );
@@ -182,7 +182,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   //  === === === === === === === === === ===  Get Data Address    === === === === === === === === === ===
 
   const listAddress = await callApiMethodGet(
-    "http://221.132.33.175:3000/delivery-address",
+    "http://huytranfullstack.id.vn:3000/delivery-address",
     token
   );
   listAddress.data.forEach((addr, index) => {
@@ -225,12 +225,12 @@ document.addEventListener("DOMContentLoaded", async () => {
   btnSignout.addEventListener("click", () => {
     localStorage.removeItem("accessToken");
     localStorage.removeItem("userName");
-    window.location.href = "http://221.132.33.175/index.html";
+    window.location.href = "http://huytranfullstack.id.vn/index.html";
   });
 
   // =================================== Get Detail Accout   =================================
   const user = await callApiMethodGet(
-    "http://221.132.33.175:3000/user/info-user",
+    "http://huytranfullstack.id.vn:3000/user/info-user",
     localStorage.getItem("accessToken")
   );
   const { email, fullName, numberPhone } = user.data;
@@ -277,7 +277,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const insertProduct = document.querySelector("#insert-product");
 
   const getHistoryBought = await callApiMethodGet(
-    "http://221.132.33.175:3000/bill/",
+    "http://huytranfullstack.id.vn:3000/bill/",
     localStorage.getItem("accessToken")
   );
   getHistoryBought?.data.forEach(async (item) => {
@@ -287,7 +287,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const price = convertNumber(price_per_unit);
 
     const findProduct = await callApiMethodGet(
-      `http://221.132.33.175:3000/product/${slug_Product}`,
+      `http://huytranfullstack.id.vn:3000/product/${slug_Product}`,
       localStorage.getItem("accessToken")
     );
     const { nameLaptop, img } = findProduct.data;
@@ -302,7 +302,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 class="col-2 col-sm-2 col-md-2 col-lg-2 d-flex justify-content-center justify-items-center border-right  border-left">
 
                 <img class="w-50"
-                    src="http://221.132.33.175:3000${imgPath}">
+                    src="http://huytranfullstack.id.vn:3000${imgPath}">
 
             </div>
             <div

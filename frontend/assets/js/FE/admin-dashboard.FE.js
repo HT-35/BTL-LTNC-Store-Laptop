@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     insertInfo.insertAdjacentHTML("beforeend", templateUser);
   } else {
-    window.location.href = "http://221.132.33.175/login.html";
+    window.location.href = "http://huytranfullstack.id.vn/login.html";
   }
 
   // ==================   Handle signout =============================
@@ -33,12 +33,12 @@ document.addEventListener("DOMContentLoaded", async () => {
   btnSignout.addEventListener("click", () => {
     localStorage.removeItem("accessToken");
     localStorage.removeItem("userName");
-    window.location.href = "http://221.132.33.175/index.html";
+    window.location.href = "http://huytranfullstack.id.vn/index.html";
   });
 
   // ==========================  Get Detail Accout   =================================
   const user = await callApiMethodGet(
-    "http://221.132.33.175:3000/user/info-user",
+    "http://huytranfullstack.id.vn:3000/user/info-user",
     localStorage.getItem("accessToken")
   );
   const { email, fullName, numberPhone } = user.data;
@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const insertBill = document.querySelector("#insert-bill");
 
   const billList = await callApiMethodGet(
-    "http://221.132.33.175:3000/bill/get-all",
+    "http://huytranfullstack.id.vn:3000/bill/get-all",
     localStorage.getItem("accessToken")
   );
 
@@ -106,13 +106,13 @@ document.addEventListener("DOMContentLoaded", async () => {
     const { slug_Product, color, quanlity, createdAt } = item.Billitems[0];
 
     const address = await callApiMethodGet(
-      `http://221.132.33.175:3000/delivery-address/detail/${id_address}`,
+      `http://huytranfullstack.id.vn:3000/delivery-address/detail/${id_address}`,
       localStorage.getItem("accessToken")
     );
     const addressDetail = address.data.address;
 
     const product = await callApiMethodGet(
-      `http://221.132.33.175:3000/product/${slug_Product}`,
+      `http://huytranfullstack.id.vn:3000/product/${slug_Product}`,
       localStorage.getItem("accessToken")
     );
     const { nameLaptop, storage, ram } = product.data;
